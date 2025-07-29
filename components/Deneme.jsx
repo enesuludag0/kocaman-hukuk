@@ -47,7 +47,7 @@ const Deneme = () => {
             <p className="text-lg">kocamanhukuk@gmail.com</p>
           </div>
         </div>
-        <div className="bg-red-950 text-white flex flex-col gap-6 mt-4 px-10 py-8">
+        <div className="bg-red-950 text-white flex flex-col gap-6 mt-4 px-10 py-7">
           <h1 className="text-xl font-semibold uppercase">Çalışma Saatlerimiz</h1>
           <div className="flex flex-col gap-2 text-gray-300/70 font-medium">
             <div className="flex items-center">

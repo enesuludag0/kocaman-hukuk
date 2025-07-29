@@ -7,7 +7,6 @@ import React from "react";
 const Hakkimizda = () => {
   return (
     <>
-      <Cover />
       <About />
       <Stats />
       <div className="bg-gray-50">

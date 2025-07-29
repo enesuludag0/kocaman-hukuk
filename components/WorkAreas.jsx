@@ -15,7 +15,7 @@ const WorkAreas = () => {
             .flatMap((link) => link.dropdown)
             .slice(0, 9)
             .map((item) => (
-              <div key={item.href} className="relative h-[300px] w-full group overflow-hidden">
+              <div key={item.href} className="relative h-[300px] w-full group overflow-hidden cursor-pointer">
                 {/* Siyah yazı kutusu */}
                 <div className="flex h-1/2 flex-col justify-center bg-black p-6 z-0 relative">
                   <h3 className="mb-2 text-xl font-semibold text-white">{item.label}</h3>
@@ -64,7 +64,7 @@ const WorkAreas = () => {
           <div className="relative text-center overflow-hidden">
             <Link
               href="/calisma-alanlarimiz"
-              className="group relative inline-block text-xl font-medium text-red-950 z-10 uppercase scale-90 hover:scale-100 hover:text-white border-2 border-red-950 px-8 py-4 transition-all duration-500 overflow-hidden"
+              className="relative group inline-block text-xl font-medium text-red-950 z-10 uppercase scale-90 hover:scale-100 hover:text-white border-2 border-red-950 px-8 py-4 transition-all duration-500"
             >
               Çalışma Alanlarımız
               <span className="absolute inset-0 z-[-1] bg-red-950 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></span>

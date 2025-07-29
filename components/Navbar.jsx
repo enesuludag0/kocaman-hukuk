@@ -5,19 +5,21 @@ const Navbar = () => {
   return (
     <nav className="relative">
       <ul className="flex space-x-8 font-bold text-xl uppercase">
-        {links.map((link) =>
-          link.dropdown ? (
-            <li key={link.label} className="group relative">
-              <Link href={link.href} className="p-4 block group-hover:text-white transition-colors">
-                {link.label}
-                <span className="absolute bottom-0 left-0 w-full border-b-2 scale-x-0 origin-center group-hover:scale-x-100 transition-transform duration-400" />
-              </Link>
+        {links.map((link, i) => (
+          <li key={i} className="relative group">
+            {/* NAVBAR MENU */}
+            <Link href={link.href} className="block group-hover:text-white p-4 transition-all duration-500">
+              {link.label}
+              <span className="absolute bottom-0 left-0 w-full border-b-[3px] scale-x-0 origin-center group-hover:scale-x-100 transition-transform duration-500" />
+            </Link>
 
-              <ul className="w-screen absolute left-0 top-full bg-white shadow-md z-50 text-base opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto">
+            {/* DROPDOWN MENU */}
+            {link.dropdown && (
+              <ul className="absolute inset-x-0 bg-white shadow-main text-base opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto">
                 {link.dropdown.map((item, index) => (
                   <>
                     <li key={index}>
-                      <Link href={item.href} className="block px-4 py-2 hover:text-black">
+                      <Link href={item.href} className="block hover:text-black  px-4 py-2">
                         {item.label}
                       </Link>
                     </li>
@@ -25,16 +27,9 @@ const Navbar = () => {
                   </>
                 ))}
               </ul>
-            </li>
-          ) : (
-            <li key={link.label} className="group relative">
-              <Link href={link.href} className="p-4 block group-hover:text-white transition-colors">
-                {link.label}
-                <span className="absolute bottom-0 left-0 w-full border-b-[3px] scale-x-0 origin-center group-hover:scale-x-100 transition-transform duration-400" />
-              </Link>
-            </li>
-          )
-        )}
+            )}
+          </li>
+        ))}
       </ul>
     </nav>
 

@@ -8,8 +8,8 @@ export const links = [
       { href: "/calisma-alanlarimiz/aile-hukuku", label: "Aile Hukuku", image: "/images/image1.jpg" },
       { href: "/calisma-alanlarimiz/ceza-hukuku", label: "Ceza Hukuku", image: "/images/image2.jpg" },
       { href: "/calisma-alanlarimiz/is-hukuku", label: "İş Hukuku", image: "/images/image3.jpg" },
-      { href: "/calisma-alanlarimiz/sigorta-hukuku", label: "Sigorta Hukuku", image: "/images/image2.jpg" }
-      // { href: "/calisma-alanlarimiz/sigorta-hukuku", label: "Sigorta Hukuku", image: "/images/image3.jpg" },
+      { href: "/calisma-alanlarimiz/sigorta-hukuku", label: "Sigorta Hukuku", image: "/images/image2.jpg" },
+      { href: "/calisma-alanlarimiz/tazminat-hukuku", label: "Tazminat Hukuku", image: "/images/image3.jpg" }
       // { href: "/calisma-alanlarimiz/sigorta-hukuku", label: "Sigorta Hukuku", image: "/images/image1.jpg" }
       // { href: "/calisma-alanlarimiz/sigorta-hukuku", label: "Sigorta Hukuku", image: "/images/image3.jpg" },
       // { href: "/calisma-alanlarimiz/sigorta-hukuku", label: "Sigorta Hukuku", image: "/images/image1.jpg" },
@@ -19,5 +19,6 @@ export const links = [
       // { href: "/calisma-alanlarimiz/sigorta-hukuku", label: "Sigorta Hukuku", image: "/images/image2.jpg" }
     ]
   },
+
   { href: "/iletisim", label: "İletişim" }
 ];

@@ -8,7 +8,6 @@ import Deneme from "@/components/Deneme";
 const Iletisim = () => {
   return (
     <>
-      <Cover />
       <Deneme />
 
       {/* CONTACT INFO */}
@@ -126,9 +125,9 @@ const Iletisim = () => {
         <iframe
           className="size-full border-0"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3060.3668099741976!2d32.857161875851624!3d39.910806771525486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d34f299746f695%3A0x4db688100fb543e3!2sAv.%20Levent%20KOCAMAN%20-%20Kocaman%20Hukuk%20%26%20Dan%C4%B1%C5%9Fmanl%C4%B1k!5e0!3m2!1str!2str!4v1753472535053!5m2!1str!2str"
-          allowfullscreen=""
+          allowFullScreen=""
           loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
+          referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
       </section>
     </>
