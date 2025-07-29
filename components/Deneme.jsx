@@ -9,12 +9,19 @@ const Deneme = () => {
     <section className="w-full max-w-[1200px] mx-auto flex items-start gap-10 py-24">
       {/* CONTACT INFO */}
       <div className="w-full flex flex-col gap-8 py-4">
-        <div className="flex items-center gap-4">
-          <Image src="/images/icon.png" alt="Kocaman Hukuk icon" width={30} height={10} draggable={false} />
-          <div className="h-full flex gap-1">
+        <div className="flex items-center gap-5 ml-2">
+          <Image
+            src="/images/icon.png"
+            alt="Kocaman Hukuk icon"
+            width={22}
+            height={10}
+            draggable={false}
+            className="pointer-events-none select-none"
+          />
+          {/* <div className="h-full flex gap-1">
             <hr className="h-full border-2 border-red-950" />
             <hr className="h-full border-2 border-red-950" />
-          </div>
+          </div> */}
           <h1 className="text-3xl font-semibold text-red-950 uppercase">İletişim Bilgileri</h1>
         </div>
         <hr />

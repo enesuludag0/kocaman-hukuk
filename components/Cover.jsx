@@ -15,7 +15,7 @@ const Cover = () => {
         }}
       ></div>
 
-      <h1 className="text-7xl text-white font-semibold uppercase z-10">{currentLink.label}</h1>
+      <h1 className="text-7xl text-white font-semibold uppercase z-10">{currentLink?.label}</h1>
     </section>
   );
 };

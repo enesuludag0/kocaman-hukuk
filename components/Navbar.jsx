@@ -17,14 +17,12 @@ const Navbar = () => {
             {link.dropdown && (
               <ul className="absolute inset-x-0 bg-white shadow-main text-base opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto">
                 {link.dropdown.map((item, index) => (
-                  <>
-                    <li key={index}>
-                      <Link href={item.href} className="block hover:text-black  px-4 py-2">
-                        {item.label}
-                      </Link>
-                    </li>
-                    {index !== link.dropdown.length - 1 && <hr className="border-white" />}
-                  </>
+                  <li key={item.href}>
+                    <Link href={item.href} className="block hover:text-black px-4 py-2">
+                      {item.label}
+                    </Link>
+                    {index !== link.dropdown.length - 1 && <hr className="border-black" />}
+                  </li>
                 ))}
               </ul>
             )}

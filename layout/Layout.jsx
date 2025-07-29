@@ -42,7 +42,7 @@ const Layout = ({ children }) => {
   const showNavTabs = pathname.startsWith("/calisma-alanlarimiz/");
 
   return (
-    <main className={`bg-cream relative flex flex-col min-h-screen overflow-hidden ${barlow.className}`}>
+    <main className={`bg-white relative flex flex-col min-h-screen overflow-hidden ${barlow.className}`}>
       <Header />
       {pathname !== "/" && <Cover />}
 
