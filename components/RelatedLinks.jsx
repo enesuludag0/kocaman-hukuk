@@ -5,10 +5,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import Link from "next/link";
 
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-
 export default function RelatedLinks() {
   return (
     <section className="w-full max-w-screen-xs sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg mx-auto py-16 sm:py-20 md:py-24 lg:py-28">
@@ -42,6 +38,7 @@ export default function RelatedLinks() {
             }
           }}
           modules={[Autoplay, Pagination, Navigation]}
+          className="mySwiper"
         >
           {relatedLinks.map((link, index) => (
             <SwiperSlide key={link.href}>
