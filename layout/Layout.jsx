@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { FaChevronUp, FaWhatsapp, FaPhone, FaEnvelope } from "react-icons/fa6";
+import { FaChevronUp, FaWhatsapp, FaPhone, FaEnvelope, FaLocationDot } from "react-icons/fa6";
 import { Barlow } from "next/font/google";
 import { usePathname } from "next/navigation";
 import Cover from "@/components/Cover";
 import NavTabsLayout from "./NavTabsLayout";
 import Link from "next/link";
+import { TiLocation } from "react-icons/ti";
 
 const barlow = Barlow({
   subsets: ["latin"],
@@ -55,22 +56,13 @@ const Layout = ({ children }) => {
     <main className={`bg-cream relative flex flex-col min-h-screen overflow-hidden ${barlow.className}`}>
       <Header />
       {pathname !== "/" && <Cover />}
-
       {showNavTabs ? <NavTabsLayout>{children}</NavTabsLayout> : children}
 
       {/* CONTACT (WP, PHONE, EMAIL) */}
       <div
-        className="fixed -right-12 top-1/2 -translate-y-1/2 z-50"
-        onMouseEnter={() =>
-          setTimeout(() => {
-            setShowOptions(true);
-          }, 100)
-        }
-        onMouseLeave={() =>
-          setTimeout(() => {
-            setShowOptions(false);
-          }, 100)
-        }
+        className="max-md:hidden fixed -right-12 top-1/2 -translate-y-1/2 z-40"
+        onMouseEnter={() => setTimeout(() => setShowOptions(true), 200)}
+        onMouseLeave={() => setTimeout(() => setShowOptions(false), 200)}
       >
         {/* Ana Buton */}
         <div
@@ -91,21 +83,21 @@ const Layout = ({ children }) => {
             href="https://wa.me/905053679077?text=Merhaba,%20web%20sitenizden%20ulaşıyorum."
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col items-center gap-1 bg-white text-red-950 rounded-md shadow-main cursor-pointer px-2 py-3 hover:bg-green-500 hover:text-white transition-all duration-300"
+            className="flex flex-col items-center gap-1 tracking-wide bg-white text-red-950 rounded-md shadow-main cursor-pointer px-2 py-3 hover:bg-green-500 hover:text-white transition-all duration-300"
           >
             <FaWhatsapp className="text-2xl" />
             <span className="text-xs font-semibold">WhatsApp</span>
           </Link>
           <Link
             href="tel:+905053679077"
-            className="flex flex-col items-center gap-1 bg-white text-red-950 rounded-md shadow-main cursor-pointer px-2 py-3 hover:bg-yellow-500 hover:text-white transition-all duration-300"
+            className="flex flex-col items-center gap-1 tracking-wide bg-white text-red-950 rounded-md shadow-main cursor-pointer px-2 py-3 hover:bg-yellow-500 hover:text-white transition-all duration-300"
           >
             <FaPhone className="text-xl" />
             <span className="text-xs font-semibold">Telefon</span>
           </Link>
           <Link
             href="/iletisim"
-            className="flex flex-col items-center gap-1 bg-white text-red-950 rounded-md shadow-main cursor-pointer px-2 py-3 hover:bg-cyan-600 hover:text-white transition-all duration-300"
+            className="flex flex-col items-center gap-1 tracking-wide bg-white text-red-950 rounded-md shadow-main cursor-pointer px-2 py-3 hover:bg-cyan-600 hover:text-white transition-all duration-300"
           >
             <FaEnvelope className="text-xl" />
             <span className="text-xs font-semibold whitespace-nowrap">E-posta</span>
@@ -113,10 +105,56 @@ const Layout = ({ children }) => {
         </div>
       </div>
 
+      {/* DOCK */}
+      <div className="md:hidden fixed inset-x-3 bottom-2 z-40 rounded-2xl shadow-main bg-gradient-to-t from-slate-900 via-slate-800 to-slate-700">
+        <ul className="h-14 flex items-center justify-between max-w-screen-xl mx-auto uppercase font-medium">
+          <li className="h-full basis-1/4 border-r border-zinc-500">
+            <Link
+              href="https://wa.me/905053679077?text=Merhaba,%20web%20sitenizden%20ulaşıyorum."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-full w-full flex flex-col items-center justify-center gap-0.5 text-green-600 pt-1"
+            >
+              <FaWhatsapp className="text-2xl -mt-0.5" />
+              <span className="text-xs">WhatsApp</span>
+            </Link>
+          </li>
+
+          <li className="h-full basis-1/4 border-r border-zinc-500">
+            <Link
+              href="tel:+905053679077"
+              className="h-full w-full flex flex-col items-center justify-center gap-1 text-amber-500 pt-1"
+            >
+              <FaPhone className="text-xl" />
+              <span className="text-xs">Telefon</span>
+            </Link>
+          </li>
+
+          <li className="h-full basis-1/4 border-r border-zinc-500">
+            <Link
+              href="https://maps.app.goo.gl/HB9CEXCiYq65uLBUA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-full w-full flex flex-col items-center justify-center gap-1 text-red-600 pt-1"
+            >
+              <TiLocation className="text-2xl -mt-1" />
+              <span className="text-xs">Yol Tarifi</span>
+            </Link>
+          </li>
+
+          <li className="h-full basis-1/4">
+            <Link href="/iletisim" className="h-full w-full flex flex-col items-center justify-center gap-1 text-cyan-600 pt-1">
+              <FaEnvelope className="text-xl" />
+              <span className="text-xs whitespace-nowrap">E-posta</span>
+            </Link>
+          </li>
+        </ul>
+      </div>
+
       {/* SCROLL UP */}
       <div
         className={`
-          fixed bottom-4 right-4 z-50 
+          fixed bottom-4 right-4 max-md:bottom-18 max-md:right-3 z-50 
         transition-all duration-500 ease-in-out 
         transform 
         ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-0 pointer-events-none"}
@@ -161,9 +199,11 @@ const Layout = ({ children }) => {
 
       <Footer />
 
+      <hr className="border-zinc-800" />
+
       {/* COPYRIGHT */}
-      <section className="w-full bg-black text-[#cdcdcd] py-6">
-        <div className="max-w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto flex flex-col sm:flex-row items-center justify-between text-center gap-y-4 text-xs md:text-sm px-8 lg:px-16">
+      <section className="w-full bg-black text-[#cdcdcd] py-5 max-md:pb-21">
+        <div className="max-w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-y-3 text-center text-xs md:text-sm pl-8 lg:pl-18 pr-8">
           <span>Telif Hakkı &copy; 2025 Kocaman Hukuk &nbsp;|&nbsp; Tüm Hakları Saklıdır.</span>
           <span>Enes Uludağ tarafından yapılmıştır.</span>
         </div>

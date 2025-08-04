@@ -2,8 +2,10 @@ import Meta from "@/components/Meta";
 import Image from "next/image";
 import { contactLinks } from "@/data/contactLinks";
 import emailjs from "@emailjs/browser";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { toast } from "react-toastify";
+import { socialLinks } from "@/data/socialLinks";
+import Link from "next/link";
 
 const Iletisim = () => {
   const form = useRef();
@@ -24,7 +26,7 @@ const Iletisim = () => {
           form.current.reset();
         },
         () => {
-          toast.error("Mesaj gönderilirken bir hata oluştu. Lütfen tekrar deneyin.");
+          toast.error("Mesaj gönderilirken bir hata oluştu. Lütfen tekrar deneyiniz.");
         }
       );
   };
@@ -39,7 +41,7 @@ const Iletisim = () => {
 
       {/* CONTACT */}
       <section className="bg-cream py-16 sm:py-20 md:py-24 lg:py-28">
-        <div className="w-full max-w-[1200px] mx-auto flex flex-col lg:flex-row items-start gap-12 sm:gap-16 md:gap-20 lg:gap-12 px-4 sm:px-6 md:px-8 lg:px-0">
+        <div className="w-full max-w-[1280px] mx-auto flex flex-col lg:flex-row items-start gap-12 sm:gap-16 md:gap-20 lg:gap-12 px-4 sm:px-6 md:px-8">
           {/* CONTACT INFO */}
           <div className="w-full lg:w-1/2 flex flex-col gap-5 sm:gap-7 md:gap-8 lg:py-3">
             <div className="flex items-center gap-4 sm:gap-5 ml-2">
@@ -51,15 +53,15 @@ const Iletisim = () => {
                 draggable={false}
                 className="pointer-events-none select-none w-5 sm:w-6 lg:w-7"
               />
-              <h1 className="text-2xl sm:text-3xl md:text-3xl font-semibold text-red-950 uppercase">İletişim Bilgileri</h1>
+              <h1 className="text-2xl sm:text-3xl font-semibold text-red-950 uppercase">İletişim Bilgileri</h1>
             </div>
             <hr />
 
             {/* ADDRESS, PHONE, EMAIL */}
             {contactLinks.map((info, index) => (
-              <>
-                <div key={index} className="flex items-center gap-4 sm:gap-5">
-                  <div className="size-10 sm:size-12 md:size-14 rounded-full flex items-center justify-center bg-red-950 text-white shrink-0">
+              <React.Fragment key={index}>
+                <div className="flex items-center gap-4 sm:gap-5">
+                  <div className="size-10 sm:size-12 md:size-14 flex items-center justify-center bg-red-950 text-white shrink-0 rounded-full">
                     <span className="text-lg sm:text-xl md:text-2xl">{info.icon}</span>
                   </div>
                   <div className="flex flex-col">
@@ -68,11 +70,22 @@ const Iletisim = () => {
                   </div>
                 </div>
                 {index < contactLinks.length - 1 && <hr />}
-              </>
+              </React.Fragment>
             ))}
 
+            {/* SOCIAL MEDIA */}
+            <ul className="w-full flex items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 mt-3 lg:mt-2.5">
+              {socialLinks.map((link, index) => (
+                <li key={index}>
+                  <Link href={link.href} className={`text-2xl sm:text-3xl flex p-1 ${link.color}`}>
+                    {link.icon}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
             {/* WORKING HOURS */}
-            <div className="bg-red-950 text-white flex flex-col gap-4 sm:gap-6 mt-3 px-6 sm:px-8 py-5 sm:py-6">
+            <div className="bg-red-950 text-white flex flex-col gap-4 sm:gap-6 mt-3 lg:mt-1 px-6 sm:px-8 py-5 sm:py-6">
               <h1 className="text-base sm:text-lg font-semibold uppercase">Çalışma Saatlerimiz</h1>
               <div className="flex flex-col gap-2 text-gray-300/70 font-medium text-sm sm:text-base">
                 <div className="flex items-center">
@@ -149,10 +162,9 @@ const Iletisim = () => {
                   required
                   className="bg-cream text-red-950 outline-none font-medium px-4 py-3"
                 ></textarea>
-
                 <button
                   type="submit"
-                  className="w-full bg-red-950 text-white text-sm sm:text-base md:text-lg font-medium border mt-6 px-6 py-3 border-red-950 rounded-none shadow-sm uppercase tracking-widest cursor-pointer hover:bg-white hover:text-red-950 transition-colors duration-300"
+                  className="w-full bg-red-950 text-white text-base md:text-lg font-medium border mt-2 sm:mt-6 px-6 py-3 border-red-950 rounded-none shadow-sm uppercase tracking-widest cursor-pointer hover:bg-white hover:text-red-950 transition-colors duration-300"
                 >
                   Gönder
                 </button>

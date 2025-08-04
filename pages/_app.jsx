@@ -13,7 +13,11 @@ export default function App({ Component, pageProps }) {
         closeButton={false}
         pauseOnFocusLoss={false}
         theme="colored"
-        toastClassName={() => "flex items-center bg-[#07BC0C] text-white font-medium rounded px-4 py-3"}
+        toastClassName={({ type }) =>
+          `flex items-center text-white text-sm sm:text-base font-medium rounded-sm max-sm:mt-3 max-sm:mx-4 px-4 py-2 ${
+            type === "success" ? "bg-[#07BC0C]" : type === "error" ? "bg-[#E74D3C]" : ""
+          }`
+        }
       />
     </Layout>
   );

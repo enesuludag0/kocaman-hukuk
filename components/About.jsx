@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 
 const About = ({ isPreview = false }) => {
   return (
@@ -33,8 +34,11 @@ const About = ({ isPreview = false }) => {
           {isPreview && (
             <Link
               href="/hakkimizda"
-              className="bg-red-950 text-white w-fit text-sm md:text-base md:font-medium mt-4 md:mt-6 px-3 md:px-4 py-2 md:py-2.5"
+              className="w-fit group flex items-center bg-red-950 text-white md:font-medium mt-4 md:mt-6 px-3 md:px-4 py-1.5 md:py-2.5"
             >
+              <span className="transform opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:mr-2 -ml-4 group-hover:ml-0 transition-all duration-700">
+                <HiOutlineArrowNarrowRight className="md:stroke-[2.5px] mt-0.5" />
+              </span>
               Devamını Görüntüle
             </Link>
           )}

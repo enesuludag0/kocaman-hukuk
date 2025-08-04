@@ -20,7 +20,6 @@ const Sidebar = () => {
   });
 
   const dropdownItems = activeLink.dropdown;
-  console.log(router.push);
 
   useEffect(() => {
     const current = dropdownItems.find((item) => item.href === pathname);

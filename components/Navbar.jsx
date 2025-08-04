@@ -63,7 +63,7 @@ const Navbar = ({ isOpen, setIsOpen }) => {
       {/* Overlay - Arka plan karartması */}
       <div
         onClick={() => setIsOpen(false)}
-        className={`fixed inset-0 bg-black/30 backdrop-brightness-50 z-40 transition-opacity duration-500 cursor-pointer ${
+        className={`fixed inset-0 bg-black/30 backdrop-brightness-50 z-10 transition-opacity duration-500 cursor-pointer ${
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       />

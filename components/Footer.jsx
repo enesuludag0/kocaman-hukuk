@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#1C0942] text-[#777] py-12 overflow-hidden">
       {/* FOOTER MAIN */}
-      <div className="max-w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 font-medium gap-8">
+      <div className="max-w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 gap-y-12 font-medium">
         {/* LOGO AND SOCIAL LINKS */}
         <div className="max-lg:col-span-full flex flex-col items-center gap-8">
           <Image
@@ -22,17 +22,16 @@ const Footer = () => {
             draggable="false"
             className="pointer-events-none select-none"
           />
-          {/* <p className="">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae, accusamus.</p> */}
-          <ul className="flex">
+
+          <ul className="flex items-center gap-4 lg:mt-3">
             {socialLinks.map((link, index) => (
               <li key={index} className="relative group">
                 <Link
                   href={link.href}
-                  className="relative block z-10 p-3 text-yellow-600 group-hover:text-red-950 group-hover:rotate-y-[360deg] transition-all duration-500 ease-in-out"
+                  className="relative block z-10 text-yellow-600 group-hover:text-red-950 group-hover:rotate-y-[360deg] transition-all duration-500 ease-in-out"
                 >
                   {link.icon}
                 </Link>
-                <span className="absolute inset-0 z-0 origin-center scale-0 group-hover:scale-90 transition-transform duration-500"></span>
               </li>
             ))}
           </ul>
