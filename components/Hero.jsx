@@ -23,7 +23,7 @@ const Hero = () => {
   }, [currentIndex]);
 
   return (
-    <section className="flex items-center relative w-full min-h-screen overflow-hidden">
+    <section className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-screen flex items-center overflow-hidden">
       {/* SLIDER BACKGROUND */}
       {images.map((src, index) => (
         <div
@@ -45,14 +45,18 @@ const Hero = () => {
       ))}
 
       {/* CONTENT */}
-      <div className="container relative z-10 flex flex-col text-white h-full px-4 mt-48">
+      <div className="container relative z-10 size-full flex flex-col justify-end gap-4 sm:gap-6 text-center md:text-left px-4 md:px-8 pb-16 sm:pb-20 md:pb-24 lg:pb-28">
         {/* LOGO */}
-        <div className="mb-6">
-          <Image src="/images/logo.png" alt="Logo" width={300} height={150} />
-        </div>
+        <Image
+          src="/images/logo.png"
+          alt="Logo"
+          width={240}
+          height={120}
+          className="w-44 sm:w-54 md:w-64 lg:w-74 h-auto mx-auto md:mx-0"
+        />
 
         {/* YAZI */}
-        <p className="text-base md:text-lg max-w-lg drop-shadow-md mt-4">
+        <p className="text-sm sm:text-base max-w-lg text-white font-medium drop-shadow-md mx-auto md:mx-0">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, nam sequi? Repellat commodi ipsam et provident saepe
           vitae iusto dicta!
         </p>

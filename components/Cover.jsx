@@ -7,15 +7,17 @@ const Cover = () => {
   const currentLink = allLinks.find((link) => link.href === pathname);
 
   return (
-    <section className="relative w-full h-[480px] flex items-center justify-center overflow-hidden">
+    <section className="relative w-full h-[300px] sm:h-[360px] md:h-[420px] lg:h-[480px] flex items-center justify-center overflow-hidden">
       <div
-        className="absolute inset-0 bg-cover bg-bottom bg-fixed brightness-50"
+        className="absolute inset-0 bg-cover bg-center brightness-50"
         style={{
           backgroundImage: "url('/images/cover.jpg')"
         }}
       ></div>
 
-      <h1 className="text-7xl text-white font-semibold uppercase z-10">{currentLink?.label}</h1>
+      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white font-semibold uppercase z-10 text-center px-4 translate-y-6 sm:translate-y-8">
+        {currentLink?.label}
+      </h1>
     </section>
   );
 };

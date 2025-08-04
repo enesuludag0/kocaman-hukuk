@@ -6,16 +6,21 @@ const WorkAreas = () => {
   const pathname = usePathname();
 
   return (
-    <section className="bg-gray-100 py-24">
-      <div className="container flex flex-col gap-16 px-16">
-        {pathname === "/" && <h1 className="text-5xl text-center font-semibold uppercase">Çalışma Alanlarımız</h1>}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+    <section className="bg-gray-100 py-16 sm:py-20 md:py-24 lg:py-28">
+      <div className="container flex flex-col gap-10 md:gap-16 px-8 md:px-16">
+        {pathname === "/" && (
+          <h1 className="text-3xl sm:text-4xl md:text-5xl text-center font-semibold uppercase">Çalışma Alanlarımız</h1>
+        )}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {links
             .filter((link) => link.dropdown)
             .flatMap((link) => link.dropdown)
             .slice(0, 9)
             .map((item) => (
-              <div key={item.href} className="relative h-[300px] w-full group overflow-hidden cursor-pointer">
+              <div
+                key={item.href}
+                className="relative h-[300px] w-full group rounded-sm shadow-md cursor-pointer overflow-hidden"
+              >
                 {/* Siyah yazı kutusu */}
                 <div className="flex h-1/2 flex-col justify-center bg-black p-6 z-0 relative">
                   <h3 className="mb-2 text-xl font-semibold text-white">{item.label}</h3>
@@ -33,7 +38,7 @@ const WorkAreas = () => {
                 ></div>
 
                 {/* Link */}
-                <a
+                <Link
                   href={item.href}
                   rel="nofollow"
                   className="absolute bottom-0 right-0 z-0 grid h-1/2 w-1/2 place-content-center bg-white text-black transition-colors hover:text-indigo-500"
@@ -56,15 +61,15 @@ const WorkAreas = () => {
                       <polyline points="7 7 17 7 17 17"></polyline>
                     </svg>
                   </div>
-                </a>
+                </Link>
               </div>
             ))}
         </div>
         {pathname === "/" && (
-          <div className="relative text-center overflow-hidden">
+          <div className="relative text-center overflow-hidden px-4 sm:px-6 md:px-12">
             <Link
               href="/calisma-alanlarimiz"
-              className="relative group inline-block text-xl font-medium text-red-950 z-10 uppercase scale-90 hover:scale-100 hover:text-white border-2 border-red-950 px-8 py-4 transition-all duration-500"
+              className="relative group inline-block text-lg md:text-xl font-medium text-red-950 z-10 uppercase scale-90 hover:scale-100 hover:text-white outline-none border-2 border-red-950 px-4 md:px-8 py-2 md:py-4 transition-all duration-500"
             >
               Çalışma Alanlarımız
               <span className="absolute inset-0 z-[-1] bg-red-950 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></span>

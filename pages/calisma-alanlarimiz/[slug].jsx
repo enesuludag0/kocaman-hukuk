@@ -1,45 +1,52 @@
+import Meta from "@/components/Meta";
 import { links } from "@/data/links";
 import { workAreasContent } from "@/data/workAreasContent";
 
-const workAreasLinks = links.find((link) => link.label === "Çalışma Alanlarımız").dropdown;
-
 const WorkAreasItem = ({ content }) => {
   return (
-    <div className="flex flex-col">
-      <h1 className="text-4xl font-bold mb-6">{content.title}</h1>
-      {content.sections.map((section, index) => (
-        <div key={index} className="mb-6">
-          <h2 className="text-xl font-semibold mb-4">{section.heading}</h2>
-          {section.content.map((item, i) => {
-            if (item.type === "paragraph") {
-              return (
-                <p key={i} className="text-gray-700 mb-3">
-                  {item.text}
-                </p>
-              );
-            }
+    <>
+      <Meta title={`${content.title} | Kocaman Hukuk Bürosu`} description={content.metaDescription} keywords={content.keywords} />
 
-            if (item.type === "list") {
-              return (
-                <ul key={i} className="list-disc list-inside mb-3 text-gray-600">
-                  {item.items.map((li, j) => (
-                    <li key={j}>{li}</li>
-                  ))}
-                </ul>
-              );
-            }
+      <div className="flex-1 flex flex-col gap-9">
+        <h1 className="text-4xl font-bold max-sm:text-center">{content.title}</h1>
+        {content.sections.map((section, index) => (
+          <div key={index} className="flex flex-col gap-4">
+            <h2 className="text-xl font-semibold max-sm:text-center">{section.heading}</h2>
+            <div className="flex flex-col gap-3">
+              {section.content.map((item, i) => {
+                if (item.type === "paragraph") {
+                  return (
+                    <p key={i} className="text-gray-700">
+                      {item.text}
+                    </p>
+                  );
+                }
 
-            return null;
-          })}
-        </div>
-      ))}
-    </div>
+                if (item.type === "list") {
+                  return (
+                    <ul key={i} className="list-disc list-inside text-gray-600">
+                      {item.items.map((li, j) => (
+                        <li key={j}>{li}</li>
+                      ))}
+                    </ul>
+                  );
+                }
+
+                return null;
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 
 export default WorkAreasItem;
 
 export const getStaticPaths = () => {
+  const workAreasLinks = links.find((link) => link.label === "Çalışma Alanlarımız").dropdown;
+
   const paths = workAreasLinks.map((link) => ({
     params: { slug: link.href.split("/").pop() }
   }));
@@ -51,7 +58,6 @@ export const getStaticPaths = () => {
 };
 
 export const getStaticProps = ({ params }) => {
-  //const currentLink = workAreasLinks.find((link) => link.href.endsWith(`/${params.slug}`));
   const content = workAreasContent[params.slug];
 
   if (!content) {
@@ -60,7 +66,6 @@ export const getStaticProps = ({ params }) => {
 
   return {
     props: {
-      //label: currentLink.label,
       content
     }
   };

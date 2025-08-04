@@ -20,20 +20,18 @@ const WiseWords = () => {
   const currentQuote = quotes[currentIndex];
 
   return (
-    <section className="relative bg-red-950 min-h-[430px] py-32 overflow-hidden">
+    <section className="relative bg-green-950 flex items-center justify-center py-16 md:py-22 lg:py-28 overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center bg-fixed opacity-10"
         style={{ backgroundImage: "url('/images/image1.jpg')" }}
       ></div>
-      <div className="max-w-[700px] mx-auto ">
-        <div
-          className={`flex flex-col items-center justify-center gap-12 text-center text-white transform transition-all duration-500 ease-in-out ${
-            isAnimating ? "translate-x-20 opacity-0" : "translate-x-0 opacity-100"
-          }`}
-        >
-          <p className="text-3xl leading-relaxed">{currentQuote.text}</p>
-          <span className="text-xl text-yellow-500 font-semibold italic">{currentQuote.author}</span>
-        </div>
+      <div
+        className={`w-full px-8 max-w-[700px] mx-auto flex flex-col items-center justify-center gap-8 md:gap-12 text-center text-white transition-all duration-500 ease-in-out ${
+          isAnimating ? "translate-x-20 opacity-0" : "translate-x-0 opacity-100"
+        }`}
+      >
+        <p className="text-xl md:text-3xl leading-relaxed">{currentQuote.text}</p>
+        <span className="text-base md:text-xl text-yellow-500 font-semibold italic">{currentQuote.author}</span>
       </div>
     </section>
   );

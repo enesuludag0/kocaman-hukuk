@@ -9,15 +9,13 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-const images = ["/images/image1.jpg", "/images/image2.jpg", "/images/image3.jpg", "/images/image4.png", "/images/icon.png"];
-
 export default function RelatedLinks() {
   return (
-    <section className="max-w-[1000px] mx-auto py-24">
-      <h1 className="text-5xl text-center font-semibold uppercase pb-16">İlgili Bağlantılar</h1>
-      <div className="relative w-full px-4">
+    <section className="w-full max-w-screen-xs sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg mx-auto py-16 sm:py-20 md:py-24 lg:py-28">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl text-center font-semibold uppercase pb-16">İlgili Bağlantılar</h1>
+      <div className="relative w-full px-4 sm:px-8">
         <Swiper
-          slidesPerView={5}
+          slidesPerView={1}
           spaceBetween={-50}
           loop={true}
           loopAdditionalSlides={1}
@@ -28,7 +26,21 @@ export default function RelatedLinks() {
           pagination={{
             clickable: true
           }}
-          navigation={true}
+          navigation
+          breakpoints={{
+            375: {
+              slidesPerView: 2
+            },
+            640: {
+              slidesPerView: 3
+            },
+            768: {
+              slidesPerView: 4
+            },
+            1024: {
+              slidesPerView: 5
+            }
+          }}
           modules={[Autoplay, Pagination, Navigation]}
         >
           {relatedLinks.map((link, index) => (

@@ -1,6 +1,9 @@
 export const workAreasContent = {
   "aile-hukuku": {
     title: "Aile Hukuku",
+    metaDescription:
+      "Boşanma, velayet ve nafaka gibi aile hukuku süreçlerinde müvekkillerimize etkili ve hassas hukuki destek sağlıyoruz.",
+    keywords: "aile hukuku, boşanma avukatı, velayet, nafaka, mal paylaşımı, anlaşmalı boşanma, çekişmeli boşanma",
     sections: [
       {
         heading: "Boşanma Davaları",
@@ -49,6 +52,9 @@ export const workAreasContent = {
 
   "ceza-hukuku": {
     title: "Ceza Hukuku",
+    metaDescription:
+      "Ceza soruşturmaları ve davalarında, müvekkillerimizin haklarını en etkin şekilde savunuyoruz. Suç isnatlarında profesyonel destek.",
+    keywords: "ceza hukuku, ceza avukatı, soruşturma, tutuklama, ifade alma, ceza davası, TCK",
     sections: [
       {
         heading: "Ceza Soruşturmaları",
@@ -93,6 +99,9 @@ export const workAreasContent = {
 
   "is-hukuku": {
     title: "İş Hukuku",
+    metaDescription:
+      "İşçi ve işveren uyuşmazlıklarında uzman kadromuzla işe iade, tazminat ve sözleşme konularında hukuki destek sunuyoruz.",
+    keywords: "iş hukuku, işe iade, kıdem tazminatı, iş sözleşmesi, fazla mesai, işten çıkarma, işveren danışmanlığı",
     sections: [
       {
         heading: "İşçi Hakları",
@@ -137,6 +146,9 @@ export const workAreasContent = {
 
   "sigorta-hukuku": {
     title: "Sigorta Hukuku",
+    metaDescription:
+      "Araç değer kaybı, trafik kazası, kasko ve hayat sigortası kaynaklı tazminat davalarında müvekkillerimizi temsil ediyoruz.",
+    keywords: "sigorta hukuku, tazminat davası, araç değer kaybı, trafik sigortası, ferdi kaza, hayat sigortası, poliçe iptali",
     sections: [
       {
         heading: "Tazminat Davaları",
@@ -181,6 +193,9 @@ export const workAreasContent = {
 
   "tazminat-hukuku": {
     title: "Tazminat Hukuku",
+    metaDescription:
+      "Haksız fiil, trafik kazası ve boşanma sonucu doğan maddi ve manevi zararlar için tazminat davaları açmaktayız.",
+    keywords: "tazminat hukuku, maddi tazminat, manevi tazminat, trafik kazası, boşanma, zarar, dava",
     sections: [
       {
         heading: "Boşanma Davaları",
