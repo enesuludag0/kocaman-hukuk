@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { FaChevronUp, FaWhatsapp, FaPhone, FaEnvelope, FaLocationDot } from "react-icons/fa6";
+import { FaChevronUp, FaWhatsapp, FaPhone, FaEnvelope } from "react-icons/fa6";
 import { Barlow } from "next/font/google";
 import { usePathname } from "next/navigation";
 import Cover from "@/components/Cover";
 import NavTabsLayout from "./NavTabsLayout";
 import Link from "next/link";
 import { TiLocation } from "react-icons/ti";
+import { links } from "@/data/links";
 
 const barlow = Barlow({
   subsets: ["latin"],
@@ -32,7 +33,7 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.scrollY > 750) {
+      if (window.scrollY > 0) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -53,20 +54,20 @@ const Layout = ({ children }) => {
   const showNavTabs = pathname.startsWith("/calisma-alanlarimiz/");
 
   return (
-    <main className={`bg-cream relative flex flex-col min-h-screen overflow-hidden ${barlow.className}`}>
+    <main className={`bg-white relative flex flex-col min-h-screen overflow-hidden ${barlow.className}`}>
       <Header />
       {pathname !== "/" && <Cover />}
       {showNavTabs ? <NavTabsLayout>{children}</NavTabsLayout> : children}
 
       {/* CONTACT (WP, PHONE, EMAIL) */}
       <div
-        className="max-md:hidden fixed -right-12 top-1/2 -translate-y-1/2 z-40"
+        className="max-md:hidden fixed -right-[49px] top-1/2 -translate-y-1/2 z-40"
         onMouseEnter={() => setTimeout(() => setShowOptions(true), 200)}
         onMouseLeave={() => setTimeout(() => setShowOptions(false), 200)}
       >
         {/* Ana Buton */}
         <div
-          className={`bg-red-950 text-white text-center text-xl font-bold uppercase tracking-widest -rotate-90 rounded-t-md shadow-main cursor-pointer px-6 py-2 transition-all duration-500 ${
+          className={`bg-gradient-to-tr from-gray-500 via-gray-300 to-gray-500 text-black text-center text-xl font-bold uppercase tracking-widest -rotate-90 rounded-t-md shadow-main cursor-pointer px-6 py-2 transition-all duration-500 ${
             showOptions ? "translate-x-full opacity-0 pointer-events-none" : "translate-x-0 opacity-100 pointer-events-auto"
           }`}
         >
@@ -83,24 +84,24 @@ const Layout = ({ children }) => {
             href="https://wa.me/905053679077?text=Merhaba,%20web%20sitenizden%20ulaşıyorum."
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col items-center gap-1 tracking-wide bg-white text-red-950 rounded-md shadow-main cursor-pointer px-2 py-3 hover:bg-green-500 hover:text-white transition-all duration-300"
+            className="flex flex-col items-center gap-1 tracking-wide bg-white text-green-500 rounded-md shadow-main cursor-pointer px-2 py-3 hover:bg-green-500 hover:!text-white transition-all duration-300"
           >
             <FaWhatsapp className="text-2xl" />
             <span className="text-xs font-semibold">WhatsApp</span>
           </Link>
           <Link
             href="tel:+905053679077"
-            className="flex flex-col items-center gap-1 tracking-wide bg-white text-red-950 rounded-md shadow-main cursor-pointer px-2 py-3 hover:bg-yellow-500 hover:text-white transition-all duration-300"
+            className="flex flex-col items-center gap-1 tracking-wide bg-white text-red-600 rounded-md shadow-main cursor-pointer px-2 py-3 hover:bg-red-600 hover:!text-white transition-all duration-300"
           >
             <FaPhone className="text-xl" />
             <span className="text-xs font-semibold">Telefon</span>
           </Link>
           <Link
             href="/iletisim"
-            className="flex flex-col items-center gap-1 tracking-wide bg-white text-red-950 rounded-md shadow-main cursor-pointer px-2 py-3 hover:bg-cyan-600 hover:text-white transition-all duration-300"
+            className="flex flex-col items-center gap-1 tracking-wide bg-white text-cyan-600 rounded-md shadow-main cursor-pointer px-2 py-3 hover:bg-cyan-600 hover:!text-white transition-all duration-300"
           >
             <FaEnvelope className="text-xl" />
-            <span className="text-xs font-semibold whitespace-nowrap">E-posta</span>
+            <span className="text-xs font-semibold">E-posta</span>
           </Link>
         </div>
       </div>
@@ -113,7 +114,7 @@ const Layout = ({ children }) => {
               href="https://wa.me/905053679077?text=Merhaba,%20web%20sitenizden%20ulaşıyorum."
               target="_blank"
               rel="noopener noreferrer"
-              className="h-full w-full flex flex-col items-center justify-center gap-0.5 text-green-600 pt-1"
+              className="h-full w-full flex flex-col items-center justify-center gap-0.5 text-green-500 pt-1"
             >
               <FaWhatsapp className="text-2xl -mt-0.5" />
               <span className="text-xs">WhatsApp</span>
@@ -153,20 +154,18 @@ const Layout = ({ children }) => {
 
       {/* SCROLL UP */}
       <div
-        className={`
-          fixed bottom-4 right-4 max-md:bottom-18 max-md:right-3 z-50 
-        transition-all duration-500 ease-in-out 
-        transform 
-        ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-0 pointer-events-none"}
+        className={`fixed bottom-4 right-4 max-md:bottom-18 max-md:right-3 z-50 transition-all duration-500 ease-in-out transform ${
+          isVisible ? "opacity-100 scale-100" : "opacity-0 scale-0"
+        }
         `}
       >
-        <div onClick={scrollToTop} className="bg-red-950 text-white rounded-md shadow-main cursor-pointer p-4">
+        <div onClick={scrollToTop} className="bg-gray text-black rounded-md shadow-main cursor-pointer p-3 sm:p-4">
           <FaChevronUp />
         </div>
       </div>
 
       {/* CONTACT CONTAINER */}
-      <section className="relative w-full bg-blue-700 text-white overflow-hidden px-4 md:px-8 lg:px-16 py-12 md:py-16">
+      <section className="relative w-full bg-blue-700 text-white overflow-hidden px-4 sm:px-8 lg:px-16 py-12 md:py-16">
         <div
           className="absolute inset-0 bg-cover bg-center bg-fixed opacity-10"
           style={{ backgroundImage: "url('/images/geo4.jpg')" }}
@@ -192,8 +191,8 @@ const Layout = ({ children }) => {
           transform: `translate(${cursorPos.x}px, ${cursorPos.y}px) translate(-50%, -50%)`
         }}
       >
-        <div className="w-5 h-5 border border-red-950 rounded-full flex items-center justify-center">
-          <div className="w-2 h-2 bg-red-950 rounded-full"></div>
+        <div className="w-5 h-5 border border-gray rounded-full flex items-center justify-center">
+          <div className="w-2 h-2 bg-gray rounded-full"></div>
         </div>
       </div> */}
 
@@ -206,6 +205,13 @@ const Layout = ({ children }) => {
         <div className="max-w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-y-3 text-center text-xs md:text-sm pl-8 lg:pl-18 pr-8">
           <span>Telif Hakkı &copy; 2025 Kocaman Hukuk &nbsp;|&nbsp; Tüm Hakları Saklıdır.</span>
           <span>Enes Uludağ tarafından yapılmıştır.</span>
+          {/* <div className="flex gap-8">
+            {links.map((link, index) => (
+              <Link key={index} href={link.href}>
+                {link.label}
+              </Link>
+            ))}
+          </div> */}
         </div>
       </section>
     </main>

@@ -1,21 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 
-const About = ({ isPreview = false }) => {
+const About = () => {
+  const pathname = usePathname();
+
   return (
     <section className="relative overflow-hidden py-16 sm:py-20 md:py-24 lg:py-28">
       {/* <div
         className="absolute inset-0 bg-contain bg-no-repeat bg-center opacity-10 my-12"
         style={{ backgroundImage: "url('/images/icon.png')" }}
       ></div> */}
-      <div className="container relative flex items-center justify-center gap-x-10 lg:gap-x-20 px-4 lg:px-8">
+      <div className="container relative flex items-center justify-center gap-x-10 lg:gap-x-20 px-4 sm:px-8">
         <div className="w-[800px] flex flex-col gap-y-4">
           <h1 className="text-3xl sm:text-4xl md:text-5xl text-center md:text-start font-semibold uppercase mb-6">
             Kocaman Hukuk & Danışmanlık
           </h1>
-          <p>
+          <p className="text-sm sm:text-base">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus similique sit nesciunt qui veniam suscipit porro vero
             dignissimos corporis quae repudiandae recusandae nemo cumque nihil, sapiente reprehenderit vitae laudantium quod quam
             quasi excepturi dolore numquam? Necessitatibus praesentium labore repellendus placeat suscipit, reiciendis delectus
@@ -23,21 +26,21 @@ const About = ({ isPreview = false }) => {
             deleniti quod alias quo doloremque sunt explicabo iste laboriosam incidunt atque iure maxime minima, non quae illum,
             amet necessitatibus recusandae, vero esse tempore! Hic!
           </p>
-          {!isPreview && (
-            <p>
+          {pathname === "/hakkimizda" && (
+            <p className="text-sm sm:text-base">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis similique, doloremque magni quas incidunt nam
               culpa accusantium nisi praesentium obcaecati excepturi ea ipsa! Deleniti odit cupiditate rem impedit illo laborum
               alias ratione nesciunt architecto? Distinctio quisquam, animi dolorem quam cupiditate praesentium deleniti, nisi
               totam quas atque facilis, tempore illo! Velit.
             </p>
           )}
-          {isPreview && (
+          {pathname === "/" && (
             <Link
               href="/hakkimizda"
-              className="w-fit group flex items-center bg-red-950 text-white md:font-medium mt-4 md:mt-6 px-3 md:px-4 py-1.5 md:py-2.5"
+              className="w-fit group flex items-center bg-gray text-sm rounded-sm md:font-medium mt-4 md:mt-6 px-3 md:px-4 py-1.5 md:py-2.5"
             >
               <span className="transform opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:mr-2 -ml-4 group-hover:ml-0 transition-all duration-700">
-                <HiOutlineArrowNarrowRight className="md:stroke-[2.5px] mt-0.5" />
+                <HiOutlineArrowNarrowRight className="stroke-1 md:stroke-2 mt-0.5" />
               </span>
               Devamını Görüntüle
             </Link>

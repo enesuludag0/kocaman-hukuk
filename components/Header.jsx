@@ -38,7 +38,7 @@ const Header = () => {
       <div className="container flex items-center justify-between px-4 sm:px-8">
         <Link href="/">
           <Image
-            src="/images/logo.png"
+            src="/images/resim6.png"
             alt="Kocaman Hukuk Logo"
             width={150}
             height={50}
@@ -50,7 +50,7 @@ const Header = () => {
         {/* Hamburger butonu sadece md altı görünür */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-3xl text-white z-10 cursor-pointer transition-all duration-300"
+          className="lg:hidden text-2xl text-gray-700 bg-gradient-to-tr from-slate-500 via-white to-slate-500 p-2 z-10 cursor-pointer transition-all duration-300"
         >
           <FaBars />
         </button>

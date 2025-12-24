@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
-const images = ["/images/image1.jpg", "/images/image2.jpg", "/images/image3.jpg"];
+const images = ["/images/image5.jpg", "/images/image6.jpg"];
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -37,7 +37,7 @@ const Hero = () => {
             alt={`Slide ${index}`}
             fill
             draggable={false}
-            className={`object-cover transition-transform duration-[10000ms] ease-out pointer-events-none select-none ${
+            className={`object-cover brightness-50 transition-transform duration-[10000ms] ease-out pointer-events-none select-none ${
               index === currentIndex && zoom ? "scale-110" : "scale-100"
             }`}
           />
@@ -45,14 +45,14 @@ const Hero = () => {
       ))}
 
       {/* CONTENT */}
-      <div className="container relative z-10 size-full flex flex-col justify-end gap-4 sm:gap-6 text-center md:text-left px-4 md:px-8 pb-16 sm:pb-20 md:pb-24 lg:pb-28">
+      <div className="container relative z-10 size-full flex flex-col justify-end items-center gap-4 sm:gap-6 text-center px-4 md:px-8 pb-16 sm:pb-20 md:pb-24 lg:pb-28">
         {/* LOGO */}
         <Image
-          src="/images/logo.png"
+          src="/images/resim6.png"
           alt="Logo"
           width={240}
           height={120}
-          className="w-44 sm:w-54 md:w-64 lg:w-74 h-auto mx-auto md:mx-0"
+          className="w-44 sm:w-54 md:w-64 lg:w-74 h-auto mx-auto md:mx-0 pointer-events-none select-none"
         />
 
         {/* YAZI */}

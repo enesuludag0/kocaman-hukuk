@@ -1,4 +1,6 @@
 import { links } from "@/data/links";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -6,78 +8,129 @@ const WorkAreas = () => {
   const pathname = usePathname();
 
   return (
-    <section className="bg-gray-100 py-16 sm:py-20 md:py-24 lg:py-28">
+    <section className="bg-gray-100 pt-16 pb-23 sm:pt-20 sm:pb-28 md:pt-24 md:pb-32 lg:pt-28 lg:pb-36">
       <div className="container flex flex-col gap-10 md:gap-16 px-8 md:px-16">
         {pathname === "/" && (
           <h1 className="text-3xl sm:text-4xl md:text-5xl text-center font-semibold uppercase">Çalışma Alanlarımız</h1>
         )}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-auto gap-x-8 gap-y-14 sm:gap-y-16 md:gap-y-18 lg:gap-y-20">
           {links
             .filter((link) => link.dropdown)
             .flatMap((link) => link.dropdown)
-            .slice(0, 9)
+            .slice(0, pathname === "/" ? 9 : undefined)
             .map((item) => (
-              <div
-                key={item.href}
-                className="relative h-[300px] w-full group rounded-sm shadow-md cursor-pointer overflow-hidden"
-              >
-                {/* Siyah yazı kutusu */}
-                <div className="flex h-1/2 flex-col justify-center bg-black p-6 z-0 relative">
-                  <h3 className="mb-2 text-xl font-semibold text-white">{item.label}</h3>
-                  <p className="text-sm font-light text-slate-300">Hukuk alanında uzmanlaşmış...</p>
+              <Link key={item.href} href={item.href} className="relative group w-[300px] h-[250px] cursor-pointer">
+                {/* RESİM */}
+                <div className="absolute inset-0 overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={`${item.label} Logo`}
+                    fill
+                    draggable="false"
+                    className="object-cover group-hover:scale-110 transition-transform duration-500 ease-out pointer-events-none select-none"
+                  />
                 </div>
 
-                {/* Arka plan görseli */}
-                <div
-                  className="card-image z-10"
-                  style={{
-                    backgroundImage: `url('${item.image}')`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center center"
-                  }}
-                ></div>
-
-                {/* Link */}
-                <Link
-                  href={item.href}
-                  rel="nofollow"
-                  className="absolute bottom-0 right-0 z-0 grid h-1/2 w-1/2 place-content-center bg-white text-black transition-colors hover:text-indigo-500"
-                >
-                  <div className="flex items-center">
-                    <span className="text-xs">DAHA FAZLASI</span>
-                    <svg
-                      stroke="currentColor"
-                      fill="none"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-lg"
-                      height="1em"
-                      width="1em"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <line x1="7" y1="17" x2="17" y2="7"></line>
-                      <polyline points="7 7 17 7 17 17"></polyline>
-                    </svg>
+                {/* KUTU */}
+                <div className="absolute w-10/12 left-1/12 -bottom-7 md:-bottom-8 h-[60px] md:h-[70px] overflow-hidden">
+                  <div className="absolute inset-0 bg-navy text-white flex justify-center items-center text-center border-b-4 border-red-800 z-10">
+                    <h3 className="text-lg font-bold uppercase tracking-wide leading-6">{item.label}</h3>
+                    {/* <p className="mt-1 text-sm italic opacity-80">criminal law</p> */}
                   </div>
-                </Link>
-              </div>
+                  <div className="absolute inset-0 bg-red-800 text-white flex justify-center items-center z-20 translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
+                    <p className="text-sm font-bold uppercase underline tracking-wide">Daha Fazlası</p>
+                    <FaArrowUpRightFromSquare className="ml-2 text-[10px]" />
+                  </div>
+                </div>
+              </Link>
             ))}
         </div>
         {pathname === "/" && (
-          <div className="relative text-center overflow-hidden px-4 sm:px-6 md:px-12">
+          <div className="relative text-center overflow-hidden mt-8 md:mt-4">
             <Link
               href="/calisma-alanlarimiz"
-              className="relative group inline-block text-lg md:text-xl font-medium text-red-950 z-10 uppercase scale-90 hover:scale-100 hover:text-white outline-none border-2 border-red-950 px-4 md:px-8 py-2 md:py-4 transition-all duration-500"
+              className="relative group inline-block text-lg sm:text-xl font-bold bg-gray rounded-full z-10 uppercase scale-90 hover:scale-100 outline-none border-2 border-gray px-4 sm:px-8 py-2 sm:py-4 transition-all duration-500"
             >
               Çalışma Alanlarımız
-              <span className="absolute inset-0 z-[-1] bg-red-950 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></span>
+              {/* <span className="absolute inset-0 z-[-1] bg-red-950 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></span> */}
             </Link>
           </div>
         )}
       </div>
     </section>
+
+    // <section className="bg-gray-100 py-16 sm:py-20 md:py-24 lg:py-28">
+    //   <div className="container flex flex-col gap-10 md:gap-16 px-8 md:px-16">
+    //     {pathname === "/" && (
+    //       <h1 className="text-3xl sm:text-4xl md:text-5xl text-center font-semibold uppercase">Çalışma Alanlarımız</h1>
+    //     )}
+    //     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    //       {links
+    //         .filter((link) => link.dropdown)
+    //         .flatMap((link) => link.dropdown)
+    //         .slice(0, 9)
+    //         .map((item) => (
+    //           <div
+    //             key={item.href}
+    //             className="relative h-[300px] w-full group rounded-sm shadow-md cursor-pointer overflow-hidden"
+    //           >
+    //             {/* Siyah yazı kutusu */}
+    //             <div className="flex h-1/2 flex-col justify-center bg-black p-6 z-0 relative">
+    //               <h3 className="mb-2 text-xl font-semibold text-white">{item.label}</h3>
+    //               <p className="text-sm font-light text-slate-300">Hukuk alanında uzmanlaşmış...</p>
+    //             </div>
+
+    //             {/* Arka plan görseli */}
+    //             <div
+    //               className="card-image z-10"
+    //               style={{
+    //                 backgroundImage: `url('${item.image}')`,
+    //                 backgroundSize: "cover",
+    //                 backgroundPosition: "center center"
+    //               }}
+    //             ></div>
+
+    //             {/* Link */}
+    //             <Link
+    //               href={item.href}
+    //               rel="nofollow"
+    //               className="absolute bottom-0 right-0 z-0 grid h-1/2 w-1/2 place-content-center bg-white text-black transition-colors hover:text-indigo-500"
+    //             >
+    //               <div className="flex items-center">
+    //                 <span className="text-xs">DAHA FAZLASI</span>
+    //                 <svg
+    //                   stroke="currentColor"
+    //                   fill="none"
+    //                   strokeWidth="2"
+    //                   viewBox="0 0 24 24"
+    //                   strokeLinecap="round"
+    //                   strokeLinejoin="round"
+    //                   className="text-lg"
+    //                   height="1em"
+    //                   width="1em"
+    //                   xmlns="http://www.w3.org/2000/svg"
+    //                 >
+    //                   <line x1="7" y1="17" x2="17" y2="7"></line>
+    //                   <polyline points="7 7 17 7 17 17"></polyline>
+    //                 </svg>
+    //               </div>
+    //             </Link>
+    //           </div>
+    //         ))}
+    //     </div>
+    //     {pathname === "/" && (
+    //       <div className="relative text-center overflow-hidden px-4 sm:px-6 md:px-12">
+    //         <Link
+    //           href="/calisma-alanlarimiz"
+    //           className="relative group inline-block text-lg md:text-xl font-medium text-red-950 z-10 uppercase scale-90 hover:scale-100 hover:text-white outline-none border-2 border-red-950 px-4 md:px-8 py-2 md:py-4 transition-all duration-500"
+    //         >
+    //           Çalışma Alanlarımız
+    //           <span className="absolute inset-0 z-[-1] bg-red-950 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></span>
+    //         </Link>
+    //       </div>
+    //     )}
+    //   </div>
+    // </section>
   );
 };
 

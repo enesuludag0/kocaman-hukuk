@@ -22,8 +22,8 @@ const WiseWords = () => {
   return (
     <section className="relative bg-green-950 flex items-center justify-center py-16 md:py-22 lg:py-28 overflow-hidden">
       <div
-        className="absolute inset-0 bg-cover bg-center bg-fixed opacity-10"
-        style={{ backgroundImage: "url('/images/image1.jpg')" }}
+        className="absolute inset-0 bg-contain bg-center opacity-5 pointer-events-none select-none"
+        style={{ backgroundImage: "url('/images/geo5.jpg')" }}
       ></div>
       <div
         className={`w-full px-8 max-w-[700px] mx-auto flex flex-col items-center justify-center gap-8 md:gap-12 text-center text-white transition-all duration-500 ease-in-out ${

@@ -5,7 +5,11 @@ import { workAreasContent } from "@/data/workAreasContent";
 const WorkAreasItem = ({ content }) => {
   return (
     <>
-      <Meta title={`${content.title} | Kocaman Hukuk Bürosu`} description={content.metaDescription} keywords={content.keywords} />
+      <Meta
+        title={`${content.title} | Kocaman Hukuk & Danışmanlık`}
+        description={content.metaDescription}
+        keywords={content.keywords}
+      />
 
       <div className="w-full sm:flex-1 flex flex-col gap-9 max-sm:mt-14 sm:ml-12 md:ml-16 lg:ml-28">
         <h1 className="text-4xl font-bold max-sm:text-center">{content.title}</h1>

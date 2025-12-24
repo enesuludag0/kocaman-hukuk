@@ -4,8 +4,8 @@ const Stats = () => {
   return (
     <section className="relative bg-blue-950 py-24 lg:py-32 overflow-hidden">
       <div
-        className="absolute inset-0 bg-cover bg-center bg-fixed opacity-10"
-        style={{ backgroundImage: "url('/images/cover.jpg')" }}
+        className="absolute inset-0 bg-contain bg-center opacity-5 pointer-events-none select-none"
+        style={{ backgroundImage: "url('/images/geo9.jpg')" }}
       ></div>
 
       <div className="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-y-16 text-white text-center sm:px-24 lg:px-4">

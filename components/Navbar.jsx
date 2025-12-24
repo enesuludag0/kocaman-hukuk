@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { links } from "@/data/links";
-import { FaChevronRight } from "react-icons/fa";
+import { FaChevronRight, FaAngleDown } from "react-icons/fa";
 import { usePathname } from "next/navigation";
+import { colorMap, socialLinks } from "@/data/socialLinks";
 
 const Navbar = ({ isOpen, setIsOpen }) => {
   const pathname = usePathname();
@@ -24,33 +25,34 @@ const Navbar = ({ isOpen, setIsOpen }) => {
   return (
     <>
       {/* Masaüstü navbar */}
-      <nav className="hidden md:block">
+      <nav className="hidden lg:block">
         <ul className="flex gap-2 lg:gap-4 font-bold text-lg lg:text-xl uppercase">
           {links.map((link, i) => (
             <li key={i} className="relative group">
               <Link
                 href={link.href}
-                className={`block p-1 lg:py-2 lg:px-4 transition-all duration-500 ${
+                className={`flex items-center gap-1 p-1 lg:py-2 lg:px-4 transition-all duration-500 ${
                   pathname === link.href ? "text-white border-b-[3px] border-white" : "group-hover:text-white"
                 }`}
               >
                 {link.label}
+                {link.label === "Çalışma Alanlarımız" && <FaAngleDown />}
                 <span className="absolute bottom-0 left-0 w-full border-b-[3px] border-white scale-x-0 origin-center group-hover:scale-x-100 transition-transform duration-500" />
               </Link>
 
               {link.dropdown && (
-                <ul className="absolute top-full left-0 w-full bg-white shadow-lg text-base opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300">
-                  {link.dropdown.map((item, index) => (
+                <ul className="absolute top-full left-0 w-full bg-white shadow-lg text-sm opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300">
+                  {link.dropdown.map((item) => (
                     <li key={item.href}>
                       <Link
                         href={item.href}
-                        className={`block px-4 py-2 transition-colors duration-200 ${
-                          pathname === item.href ? "text-black" : "text-[#777] hover:text-black"
+                        className={`block text-black px-4 py-2 transition-colors duration-200 ${
+                          pathname === item.href ? "bg-black text-white" : "hover:bg-black hover:text-white"
                         }`}
                       >
                         {item.label}
                       </Link>
-                      {index !== link.dropdown.length - 1 && <hr className="border-gray-300" />}
+                      {/* {index !== link.dropdown.length - 1 && <hr className="border-gray-300" />} */}
                     </li>
                   ))}
                 </ul>
@@ -129,6 +131,24 @@ const Navbar = ({ isOpen, setIsOpen }) => {
             </React.Fragment>
           ))}
         </ul>
+
+        <div className="absolute bottom-8 w-full px-5">
+          <h3 className="text-xl font-semibold text-center mb-6">Sosyal Medya</h3>
+          <ul className="flex items-center justify-center gap-5">
+            {socialLinks.map((link, index) => (
+              <li key={index} className="group">
+                <Link
+                  href={link.href}
+                  className={`block z-10 text-xl group-hover:rotate-y-[360deg] transition-all duration-500 ease-in-out ${
+                    colorMap[link.key]
+                  }`}
+                >
+                  {link.icon}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </>
   );

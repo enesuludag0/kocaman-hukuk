@@ -9,9 +9,9 @@ const Cover = () => {
   return (
     <section className="relative w-full h-[300px] sm:h-[360px] md:h-[420px] lg:h-[480px] flex items-center justify-center overflow-hidden">
       <div
-        className="absolute inset-0 bg-cover bg-center brightness-50"
+        className="absolute inset-0 bg-cover bg-top brightness-50"
         style={{
-          backgroundImage: "url('/images/cover.jpg')"
+          backgroundImage: "url('/images/cover1.jpg')"
         }}
       ></div>
 
