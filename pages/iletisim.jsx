@@ -34,26 +34,25 @@ const Iletisim = () => {
   return (
     <>
       <Meta
-        title="İletişim | Kocaman Hukuk Bürosu"
+        title="İletişim | Kocaman Hukuk & Danışmanlık"
         description="Kocaman Hukuk Bürosu ile ihtiyaçlarınıza yönelik hızlı ve kapsamlı hukuki destek için iletişime geçin. Hukuki sorularınızı bize iletin, profesyonel danışmanlık randevusu alın. Bizlere telefon, e-posta, whatsapp ve ofis adresimiz üzerinden kolayca ulaşabilirsiniz."
         keywords="iletişim, avukatla görüşme, Ankara avukat, Ankara hukuk bürosu, hukuk danışmanlığı, telefon, e-posta, ofis adresi, whatsapp iletişim, whatsapp danışmanlık"
       />
 
       {/* CONTACT */}
-      <section className="bg-cream py-16 sm:py-20 md:py-24 lg:py-28">
+      <section className="py-16 sm:py-20 md:py-24 lg:py-28">
         <div className="w-full max-w-[1280px] mx-auto flex flex-col lg:flex-row items-start gap-12 sm:gap-16 md:gap-20 lg:gap-12 px-4 sm:px-6 md:px-8">
           {/* CONTACT INFO */}
-          <div className="w-full lg:w-1/2 flex flex-col gap-5 sm:gap-7 md:gap-8 lg:py-3">
+          <div className="size-full lg:w-1/2 flex flex-col gap-5 sm:gap-7 md:gap-7">
             <div className="flex items-center gap-4 sm:gap-5 ml-2">
               <Image
-                src="/images/icon.png"
-                alt="Kocaman Hukuk icon"
-                width={22}
-                height={22}
-                draggable={false}
-                className="pointer-events-none select-none w-5 sm:w-6 lg:w-7"
+                src="/images/courthouse-black.png"
+                alt="Adalet Sarayı Icon"
+                width={25}
+                height={25}
+                className="size-6 sm:size-7 lg:size-8 object-cover pointer-events-none select-none"
               />
-              <h1 className="text-2xl sm:text-3xl font-semibold text-red-950 uppercase">İletişim Bilgileri</h1>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold uppercase mt-1">İletişim Bilgileri</h1>
             </div>
             <hr />
 
@@ -61,41 +60,30 @@ const Iletisim = () => {
             {contactLinks.map((info, index) => (
               <React.Fragment key={index}>
                 <div className="flex items-center gap-4 sm:gap-5">
-                  <div className="size-10 sm:size-12 md:size-14 flex items-center justify-center bg-red-950 text-white shrink-0 rounded-full">
+                  <div className="size-10 sm:size-12 md:size-14 flex items-center justify-center bg-gray shrink-0 rounded-full">
                     <span className="text-lg sm:text-xl md:text-2xl">{info.icon}</span>
                   </div>
                   <div className="flex flex-col">
                     <h3 className="text-lg sm:text-xl md:text-2xl font-semibold uppercase">{info.title}</h3>
-                    <p className="text-base md:text-lg">{info.label}</p>
+                    <p className="text-sm sm:text-base md:text-lg">{info.label}</p>
                   </div>
                 </div>
                 {index < contactLinks.length - 1 && <hr />}
               </React.Fragment>
             ))}
 
-            {/* SOCIAL MEDIA */}
-            <ul className="w-full flex items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 mt-3 lg:mt-2.5">
-              {socialLinks.map((link, index) => (
-                <li key={index}>
-                  <Link href={link.href} className={`text-2xl sm:text-3xl flex p-1 ${link.color}`}>
-                    {link.icon}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
             {/* WORKING HOURS */}
-            <div className="bg-red-950 text-white flex flex-col gap-4 sm:gap-6 mt-3 lg:mt-1 px-6 sm:px-8 py-5 sm:py-6">
+            <div className="bg-gray flex flex-col gap-4 sm:gap-6 mt-3 lg:mt-2 px-6 sm:px-8 py-5 sm:py-6">
               <h1 className="text-base sm:text-lg font-semibold uppercase">Çalışma Saatlerimiz</h1>
-              <div className="flex flex-col gap-2 text-gray-300/70 font-medium text-sm sm:text-base">
+              <div className="flex flex-col gap-2 text-sm sm:text-base font-medium">
                 <div className="flex items-center">
                   <span className="whitespace-nowrap">Pazartesi - Cuma</span>
-                  <span className="flex-grow border-b border-gray-300/50 mx-3 sm:mx-5 mt-1" />
+                  <span className="flex-grow border-b border-black mx-3 sm:mx-5 mt-1" />
                   <span className="whitespace-nowrap">09:00 - 18:00</span>
                 </div>
                 <div className="flex items-center">
                   <span className="whitespace-nowrap">Cumartesi - Pazar</span>
-                  <span className="flex-grow border-b border-gray-300/50 mx-3 sm:mx-5 mt-1" />
+                  <span className="flex-grow border-b border-black mx-3 sm:mx-5 mt-1" />
                   <span className="whitespace-nowrap">Kapalı</span>
                 </div>
               </div>
@@ -103,9 +91,9 @@ const Iletisim = () => {
           </div>
 
           {/* CONTACT FORM */}
-          <div className="w-full lg:w-1/2 bg-white p-6 max-sm:py-10 sm:p-12 md:p-14 lg:p-16">
+          <div className="size-full lg:w-1/2 bg-white max-sm:py-10 px-6 sm:px-12 md:px-14 lg:px-16">
             <div className="flex flex-col gap-8">
-              <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center font-semibold uppercase leading-snug mb-2 sm:mb-4 lg:mb-6">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl text-center font-semibold uppercase leading-snug">
                 Bizimle
                 <em className="font-bold text-yellow-600"> İletişime </em>
                 Geçin
@@ -118,14 +106,14 @@ const Iletisim = () => {
                     name="firstName"
                     placeholder="Adınız"
                     required
-                    className="w-full sm:w-1/2 bg-cream text-red-950 outline-none font-medium px-4 py-3"
+                    className="w-full sm:w-1/2 bg-lightgray rounded-full outline-none font-medium px-5 py-3"
                   />
                   <input
                     type="text"
                     name="lastName"
                     placeholder="Soyadınız"
                     required
-                    className="w-full sm:w-1/2 bg-cream text-red-950 outline-none font-medium px-4 py-3"
+                    className="w-full sm:w-1/2 bg-lightgray rounded-full outline-none font-medium px-5 py-3"
                   />
                 </div>
 
@@ -135,7 +123,7 @@ const Iletisim = () => {
                     name="email"
                     placeholder="E-Posta Adresiniz"
                     required
-                    className="w-full sm:w-1/2 bg-cream text-red-950 outline-none font-medium px-4 py-3"
+                    className="w-full sm:w-1/2 bg-lightgray rounded-full outline-none font-medium px-5 py-3"
                   />
                   <input
                     type="tel"
@@ -143,7 +131,7 @@ const Iletisim = () => {
                     placeholder="Telefon Numaranız"
                     maxLength={11}
                     required
-                    className="w-full sm:w-1/2 bg-cream text-red-950 outline-none font-medium px-4 py-3"
+                    className="w-full sm:w-1/2 bg-lightgray rounded-full outline-none font-medium px-5 py-3"
                   />
                 </div>
 
@@ -152,7 +140,7 @@ const Iletisim = () => {
                   name="subject"
                   placeholder="Mesajınızın Konusu"
                   required
-                  className="bg-cream text-red-950 outline-none font-medium px-4 py-3"
+                  className="bg-lightgray rounded-full outline-none font-medium px-5 py-3"
                 />
 
                 <textarea
@@ -160,11 +148,11 @@ const Iletisim = () => {
                   rows="5"
                   placeholder="Mesajınız"
                   required
-                  className="bg-cream text-red-950 outline-none font-medium px-4 py-3"
+                  className="bg-lightgray rounded-3xl outline-none font-medium px-5 py-3"
                 ></textarea>
                 <button
                   type="submit"
-                  className="w-full bg-red-950 text-white text-base md:text-lg font-medium border mt-2 sm:mt-6 px-6 py-3 border-red-950 rounded-none shadow-sm uppercase tracking-widest cursor-pointer hover:bg-white hover:text-red-950 transition-colors duration-300"
+                  className="w-full bg-gray text-base md:text-lg font-medium border mt-2 sm:mt-4 px-6 py-3 border-gray rounded-none shadow-sm uppercase tracking-widest cursor-pointer"
                 >
                   Gönder
                 </button>

@@ -1,7 +1,15 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import { Playfair_Display } from "next/font/google";
+import TextType from "./ui/TextType";
+import Link from "next/link";
 
-const images = ["/images/image1.jpg", "/images/image2.jpg", "/images/image3.jpg"];
+const playFairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"]
+});
+
+const images = ["/images/image5.jpg", "/images/image6.jpg"];
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -23,7 +31,7 @@ const Hero = () => {
   }, [currentIndex]);
 
   return (
-    <section className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-screen flex items-center overflow-hidden">
+    <section className="relative w-full h-[500px] sm:h-[550px] md:h-[650px] lg:h-screen overflow-hidden">
       {/* SLIDER BACKGROUND */}
       {images.map((src, index) => (
         <div
@@ -37,7 +45,7 @@ const Hero = () => {
             alt={`Slide ${index}`}
             fill
             draggable={false}
-            className={`object-cover transition-transform duration-[10000ms] ease-out pointer-events-none select-none ${
+            className={`object-cover brightness-80 transition-transform duration-[10000ms] ease-out pointer-events-none select-none ${
               index === currentIndex && zoom ? "scale-110" : "scale-100"
             }`}
           />
@@ -45,21 +53,53 @@ const Hero = () => {
       ))}
 
       {/* CONTENT */}
-      <div className="container relative z-10 size-full flex flex-col justify-end gap-4 sm:gap-6 text-center md:text-left px-4 md:px-8 pb-16 sm:pb-20 md:pb-24 lg:pb-28">
+      <div className="container relative z-10 size-full text-white flex flex-col justify-end items-center gap-4 sm:gap-6 text-center px-4 sm:px-8 pb-16 sm:pb-20 md:pb-24 lg:pb-28">
         {/* LOGO */}
-        <Image
-          src="/images/logo.png"
+        {/* <Image
+          src="/images/resim7.png"
           alt="Logo"
           width={240}
           height={120}
-          className="w-44 sm:w-54 md:w-64 lg:w-74 h-auto mx-auto md:mx-0"
-        />
+          className="w-44 sm:w-54 md:w-64 lg:w-74 h-auto mx-auto md:mx-0 pointer-events-none select-none"
+        /> */}
 
-        {/* YAZI */}
-        <p className="text-sm sm:text-base max-w-lg text-white font-medium drop-shadow-md mx-auto md:mx-0">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, nam sequi? Repellat commodi ipsam et provident saepe
-          vitae iusto dicta!
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[91%] lg:w-[82%]">
+          <TextType
+            text={[
+              "Hukukta Doğru Adres",
+              "Hukukta Profesyonel Yaklaşım",
+              "Hukukta Güven Çözümde Netlik",
+              "Doğru Strateji Güçlü Sonuçlar",
+              "Güvenilir Hukuk Desteği"
+            ]}
+            typingSpeed={75}
+            deletingSpeed={10}
+            pauseDuration={5000}
+            showCursor={true}
+            cursorCharacter=""
+            className={`text-3xl sm:text-[42px] md:text-[54px] lg:text-7xl font-bold tracking-wide uppercase leading-tight ${playFairDisplay.className}`}
+          />
+        </div>
+
+        <p className="text-xs sm:text-sm md:text-base max-w-2xl md:font-medium">
+          Ankara’da faaliyet gösteren <span className="text-yellow-600 font-semibold">Kocaman Hukuk & Danışmanlık Bürosu</span>{" "}
+          olarak, adalete bağlılığımız ve yıllara dayanan deneyimimizle güvenilir ve sonuç odaklı hukuki çözümler sunuyoruz.
         </p>
+
+        <div className="flex justify-center items-center gap-4 tracking-wide">
+          <Link
+            href="/hakkimizda"
+            className="text-xs sm:text-sm md:text-base bg-navy border-2 border-navy outline-none rounded-sm hover:!bg-white hover:text-black hover:!border-white px-3 md:px-4 py-1.5 md:py-2.5 transition-all duration-300"
+          >
+            Hakkımızda
+          </Link>
+          <Link
+            href="/iletisim"
+            className="text-xs sm:text-sm md:text-base bg-[#777] border-2 border-[#777] outline-none rounded-sm hover:bg-white hover:text-black hover:border-white px-3 md:px-4 py-1.5 md:py-2.5 transition-all duration-300"
+          >
+            İletişim
+          </Link>
+        </div>
       </div>
     </section>
   );

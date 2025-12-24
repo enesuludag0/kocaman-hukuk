@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { links } from "@/data/links";
-import { FaChevronRight } from "react-icons/fa";
+import { FaChevronRight, FaAngleDown } from "react-icons/fa";
 import { usePathname } from "next/navigation";
+import { colorMap, socialLinks } from "@/data/socialLinks";
+import Image from "next/image";
 
 const Navbar = ({ isOpen, setIsOpen }) => {
   const pathname = usePathname();
@@ -24,33 +26,34 @@ const Navbar = ({ isOpen, setIsOpen }) => {
   return (
     <>
       {/* Masaüstü navbar */}
-      <nav className="hidden md:block">
-        <ul className="flex gap-2 lg:gap-4 font-bold text-lg lg:text-xl uppercase">
+      <nav className="hidden lg:block">
+        <ul className="flex gap-2 lg:gap-4 text-lg font-semibold uppercase">
           {links.map((link, i) => (
             <li key={i} className="relative group">
               <Link
                 href={link.href}
-                className={`block p-1 lg:py-2 lg:px-4 transition-all duration-500 ${
+                className={`flex items-center gap-1 p-1 lg:py-2 lg:px-4 transition-all duration-500 ${
                   pathname === link.href ? "text-white border-b-[3px] border-white" : "group-hover:text-white"
                 }`}
               >
                 {link.label}
+                {link.label === "Çalışma Alanlarımız" && <FaAngleDown />}
                 <span className="absolute bottom-0 left-0 w-full border-b-[3px] border-white scale-x-0 origin-center group-hover:scale-x-100 transition-transform duration-500" />
               </Link>
 
               {link.dropdown && (
-                <ul className="absolute top-full left-0 w-full bg-white shadow-lg text-base opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300">
-                  {link.dropdown.map((item, index) => (
+                <ul className="absolute top-full left-0 w-full bg-white shadow-lg text-sm opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300">
+                  {link.dropdown.map((item) => (
                     <li key={item.href}>
                       <Link
                         href={item.href}
-                        className={`block px-4 py-2 transition-colors duration-200 ${
-                          pathname === item.href ? "text-black" : "text-[#777] hover:text-black"
+                        className={`block text-[#7a7a7a] font-medium px-4 py-2 transition-colors duration-200 ${
+                          pathname === item.href ? "bg-black text-white" : "hover:bg-black hover:text-white"
                         }`}
                       >
                         {item.label}
                       </Link>
-                      {index !== link.dropdown.length - 1 && <hr className="border-gray-300" />}
+                      {/* {index !== link.dropdown.length - 1 && <hr className="border-gray-300" />} */}
                     </li>
                   ))}
                 </ul>
@@ -71,18 +74,29 @@ const Navbar = ({ isOpen, setIsOpen }) => {
       {/* Hamburger menü */}
       <div
         ref={menuRef}
-        className={`fixed top-0 right-0 h-full w-[83%] xs:w-[300px] bg-white shadow-lg z-50 transition-transform duration-500 ease-in-out transform ${
+        className={`fixed top-0 right-0 h-full max-[357px]:w-[90%] w-[80%] xs:w-[300px] sm:w-[350px] md:w-[400px] bg-white shadow-lg z-50 transition-transform duration-500 ease-in-out transform overflow-y-auto ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
+        <Link href="/" className="flex justify-center py-4">
+          <Image
+            src="/images/resim8.PNG"
+            alt="Kocaman Hukuk Logo"
+            width={200}
+            height={50}
+            draggable="false"
+            className="pointer-events-none select-none"
+          />
+        </Link>
         <ul className="flex flex-col text-[#777]">
+          <hr className="border-neutral-300" />
           {links.map((link, i) => (
             <React.Fragment key={i}>
               <li className="flex items-stretch group">
                 <Link
                   href={link.href}
                   className={`flex-1 font-bold uppercase px-5 py-4
-                      ${pathname === link.href && "text-black"}
+                      ${pathname === link.href && "text-navy"}
                       ${openDropdown === i ? "bg-neutral-100" : ""}`}
                   onClick={() => setIsOpen(false)}
                 >
@@ -96,7 +110,7 @@ const Navbar = ({ isOpen, setIsOpen }) => {
                       setOpenDropdown(openDropdown === i ? null : i);
                     }}
                     className={`flex items-center justify-center border-l px-5 cursor-pointer transition-all duration-200 ${
-                      openDropdown === i && "bg-black text-white"
+                      openDropdown === i && "bg-navy text-white"
                     }`}
                   >
                     <FaChevronRight
@@ -108,26 +122,48 @@ const Navbar = ({ isOpen, setIsOpen }) => {
 
               <hr className="border-neutral-300" />
 
-              {link.dropdown &&
-                openDropdown === i &&
-                link.dropdown.map((item) => (
-                  <React.Fragment key={item.href}>
-                    <li>
-                      <Link
-                        href={item.href}
-                        onClick={() => setIsOpen(false)}
-                        className={`block px-5 py-3 text-[#777] hover:text-black text-sm font-semibold transition-colors ${
-                          pathname === item.href && "text-black"
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
-                    </li>
-                    <hr className="border-gray-300" />
-                  </React.Fragment>
-                ))}
+              {link.dropdown && (
+                <div
+                  className={`transition-all duration-500 overflow-hidden ${
+                    openDropdown === i ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+                  }`}
+                >
+                  {link.dropdown.map((item) => (
+                    <React.Fragment key={item.href}>
+                      <li>
+                        <Link
+                          href={item.href}
+                          onClick={() => setIsOpen(false)}
+                          className={`block px-5 py-3 text-[#777] hover:text-[#003070] text-sm font-medium transition-all duration-200 ${
+                            pathname === item.href && "text-navy font-semibold"
+                          }`}
+                        >
+                          {item.label}
+                        </Link>
+                      </li>
+                      <hr className="border-gray-300" />
+                    </React.Fragment>
+                  ))}
+                </div>
+              )}
             </React.Fragment>
           ))}
+
+          <div className="py-8">
+            <ul className="flex items-center justify-center gap-2">
+              {socialLinks.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    href={link.href}
+                    target="_blank"
+                    className={`block text-white rounded-full text-lg p-2.5 ${colorMap[link.key]}`}
+                  >
+                    {link.icon}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </ul>
       </div>
     </>

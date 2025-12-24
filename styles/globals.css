@@ -1,11 +1,15 @@
 @import "tailwindcss";
+@theme {
+  --breakpoint-xs: 480px;
+}
+
 @import "swiper/css";
 @import "swiper/css/navigation";
 @import "swiper/css/pagination";
 @import "tw-animate-css";
 @custom-variant dark (&:is(.dark *));
 :root {
-  --foreground: oklch(0.145 0 0);
+  --foreground: oklch(0% 0 0);
   --background: oklch(1 0 0);
   --radius: 0.625rem;
   --card: oklch(1 0 0);
@@ -98,7 +102,55 @@ body {
 }
 
 nav {
-  color: #551d17;
+  color: #b7b7b7;
+  /* color: #fde15b; */
+  /* color: #e1bf6a; */
+  /* color: #551d17; */
+}
+
+nav .active {
+  color: #7c7c7c;
+  border-color: #7c7c7c;
+}
+
+.bg-gray {
+  background: #b7b7b7;
+}
+
+.text-gray {
+  color: #b7b7b7;
+}
+
+.border-gray {
+  border-color: #b7b7b7;
+}
+
+.bg-navy {
+  background: #003070;
+}
+
+.text-navy {
+  color: #003070;
+}
+
+.border-navy {
+  border-color: #003070;
+}
+
+/* .text-yellow {
+  color: #e1bf6a;
+}
+
+.bg-yellow {
+  background: #e1bf6a;
+}
+
+.border-yellow {
+  border-color: #e1bf6a;
+} */
+
+.bg-lightgray {
+  background: #ebebeb;
 }
 
 .bg-cream {
@@ -129,7 +181,7 @@ nav {
 }
 
 :root {
-  --swiper-theme-color: #460809 !important;
+  --swiper-theme-color: #7c7c7c !important;
   --swiper-navigation-size: 16px !important;
 }
 

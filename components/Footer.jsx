@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { socialLinks } from "@/data/socialLinks";
+import { colorMap, socialLinks } from "@/data/socialLinks";
 import { links } from "@/data/links";
 import { FaAngleRight } from "react-icons/fa6";
 import { contactLinks } from "@/data/contactLinks";
@@ -9,13 +9,18 @@ const Footer = () => {
   const workAreasLink = links.find((link) => link.href === "/calisma-alanlarimiz");
 
   return (
-    <footer className="bg-[#1C0942] text-[#777] py-12 overflow-hidden">
+    <footer className="relative bg-[#060423] text-[#777] py-12 overflow-hidden">
       {/* FOOTER MAIN */}
-      <div className="max-w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 gap-y-12 font-medium">
+      <div className="max-w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 gap-y-12 font-medium">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-10 pointer-events-none select-none"
+          style={{ backgroundImage: "url('/images/footer1.jpg')" }}
+        ></div>
+
         {/* LOGO AND SOCIAL LINKS */}
         <div className="max-lg:col-span-full flex flex-col items-center gap-8">
           <Image
-            src="/images/logo.png"
+            src="/images/resim6.png"
             alt="Kocaman Hukuk Logo"
             width={200}
             height={50}
@@ -25,10 +30,13 @@ const Footer = () => {
 
           <ul className="flex items-center gap-4 lg:mt-3">
             {socialLinks.map((link, index) => (
-              <li key={index} className="relative group">
+              <li key={index} className="group">
                 <Link
                   href={link.href}
-                  className="relative block z-10 text-yellow-600 group-hover:text-red-950 group-hover:rotate-y-[360deg] transition-all duration-500 ease-in-out"
+                  target="_blank"
+                  className={`block z-10 text-[#b7b7b7] text-lg group-hover:rotate-y-[360deg] transition-all duration-500 ease-in-out ${
+                    colorMap[link.key]
+                  }`}
                 >
                   {link.icon}
                 </Link>
@@ -38,7 +46,7 @@ const Footer = () => {
         </div>
 
         {/* QUICK LINKS */}
-        <div className="flex flex-col gap-3 px-10 max-lg:px-0">
+        <div className="flex flex-col gap-3 px-9 max-lg:px-0">
           <div className="flex flex-col gap-1">
             <h3 className="text-lg md:text-xl text-[#cdcdcd] font-semibold uppercase">Hızlı Bağlantılar</h3>
             <hr className="w-12 h-[2.5px] bg-[#cdcdcd] border-none" />
@@ -50,7 +58,7 @@ const Footer = () => {
                   href={link.href}
                   className="flex items-center gap-1 text-sm md:text-base group-hover:text-white transition-all duration-300"
                 >
-                  <FaAngleRight className="pt-[3px]" />
+                  {/* <FaAngleRight className="pt-[3px]" /> */}
                   <span className="group-hover:underline decoration-1">{link.label}</span>
                 </Link>
               </li>
@@ -65,13 +73,13 @@ const Footer = () => {
             <hr className="w-12 h-[2.5px] bg-[#cdcdcd] border-none" />
           </div>
           <ul className="flex flex-col gap-1">
-            {workAreasLink.dropdown.map((link, index) => (
+            {workAreasLink.dropdown.slice(0, 6).map((link, index) => (
               <li key={index} className="group w-fit">
                 <Link
                   href={link.href}
                   className="flex items-center gap-1 text-sm md:text-base group-hover:text-white transition-all duration-300"
                 >
-                  <FaAngleRight className="pt-[3px]" />
+                  {/* <FaAngleRight className="pt-[3px]" /> */}
                   <span className="group-hover:underline decoration-1">{link.label}</span>
                 </Link>
               </li>
