@@ -96,9 +96,10 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-.container {
-  /* lg: px-12 */
-  @apply max-w-[1140px] mx-auto;
+@layer utilities {
+  .container {
+    @apply max-w-[1200px] mx-auto;
+  }
 }
 
 nav {

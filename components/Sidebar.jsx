@@ -25,42 +25,44 @@ const Sidebar = () => {
   const activeItem = dropdownItems.find((item) => item.href === pathname);
 
   return (
-    <aside className="w-full md:w-[250px] lg:w-[250px] flex-shrink-0">
+    <aside className="w-full md:w-[250px]">
       {/* Sidebar */}
-      <div className="max-md:hidden text-sm lg:text-base">
-        <h3 className="text-lg font-bold uppercase mb-6">{activeLink.label}</h3>
-        <ul className="hidden md:flex flex-col gap-3 lg:gap-4">
-          {dropdownItems.map((link, i) => {
-            const isActive = pathname === link.href;
+      <div className="sticky top-6">
+        <div className="max-md:hidden text-sm lg:text-base">
+          <h3 className="text-lg lg:text-xl font-bold uppercase mb-6">{activeLink.label}</h3>
+          <ul className="hidden md:flex flex-col gap-3 lg:gap-4">
+            {dropdownItems.map((link, i) => {
+              const isActive = pathname === link.href;
 
-            return (
-              <>
-                <li
-                  key={i}
-                  className={`group hover:text-yellow-600 border-l-3 hover:border-yellow-600 transition-all duration-500 ${
-                    isActive ? "text-yellow-600 border-yellow-600" : ""
-                  }`}
-                >
-                  <Link href={link.href} className="block pl-3">
-                    <div className="flex items-center">
-                      <span
-                        className={`transition-all duration-500 transform ${
-                          isActive
-                            ? "opacity-100 mr-3"
-                            : "opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:mr-2 -ml-3 group-hover:ml-0"
-                        }`}
-                      >
-                        <FaLongArrowAltRight className="text-yellow-600" />
-                      </span>
-                      <span className="font-medium">{link.label}</span>
-                    </div>
-                  </Link>
-                </li>
-                {i < dropdownItems.length - 1 && <hr />}
-              </>
-            );
-          })}
-        </ul>
+              return (
+                <>
+                  <li
+                    key={i}
+                    className={`group hover:text-yellow-600 border-l-3 hover:border-yellow-600 transition-all duration-500 ${
+                      isActive ? "text-yellow-600 border-yellow-600" : ""
+                    }`}
+                  >
+                    <Link href={link.href} className="block pl-3">
+                      <div className="flex items-center">
+                        <span
+                          className={`transition-all duration-500 transform ${
+                            isActive
+                              ? "opacity-100 mr-3"
+                              : "opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:mr-2 -ml-3 group-hover:ml-0"
+                          }`}
+                        >
+                          <FaLongArrowAltRight className="text-yellow-600" />
+                        </span>
+                        <span className="font-medium">{link.label}</span>
+                      </div>
+                    </Link>
+                  </li>
+                  {i < dropdownItems.length - 1 && <hr />}
+                </>
+              );
+            })}
+          </ul>
+        </div>
       </div>
 
       {/* MOBİL ACCORDION */}
@@ -84,7 +86,7 @@ const Sidebar = () => {
           }}
           className="overflow-hidden transition-all duration-500"
         >
-          <ul className="bg-navy text-gray text-center">
+          <ul className="bg-navy text-gray text-center border-t border-gray-500 flex flex-col gap-4 py-4">
             {dropdownItems
               .filter((item) => item.href !== pathname)
               .map((item) => (
@@ -94,7 +96,7 @@ const Sidebar = () => {
                     router.push(item.href);
                     setIsOpen(false);
                   }}
-                  className="hover:text-white px-5 py-3 cursor-pointer transition"
+                  className="hover:text-white cursor-pointer transition"
                 >
                   {item.label}
                 </li>

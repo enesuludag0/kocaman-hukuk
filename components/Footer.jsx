@@ -9,18 +9,18 @@ const Footer = () => {
   const workAreasLink = links.find((link) => link.href === "/calisma-alanlarimiz");
 
   return (
-    <footer className="relative bg-[#060423] text-[#777] py-12 overflow-hidden">
+    <footer className="relative bg-[#060423] text-[#777] py-12 md:py-16 overflow-hidden">
       {/* FOOTER MAIN */}
       <div className="max-w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 gap-y-12 font-medium">
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-10 pointer-events-none select-none"
+          className="absolute inset-0 bg-cover bg-center bg-fixed opacity-10 pointer-events-none select-none"
           style={{ backgroundImage: "url('/images/footer1.jpg')" }}
         ></div>
 
         {/* LOGO AND SOCIAL LINKS */}
         <div className="max-lg:col-span-full flex flex-col items-center gap-8">
           <Image
-            src="/images/resim6.png"
+            src="/images/resim7.png"
             alt="Kocaman Hukuk Logo"
             width={200}
             height={50}
@@ -28,13 +28,13 @@ const Footer = () => {
             className="pointer-events-none select-none"
           />
 
-          <ul className="flex items-center gap-4 lg:mt-3">
+          <ul className="flex items-center gap-4">
             {socialLinks.map((link, index) => (
               <li key={index} className="group">
                 <Link
                   href={link.href}
                   target="_blank"
-                  className={`block z-10 text-[#b7b7b7] text-lg group-hover:rotate-y-[360deg] transition-all duration-500 ease-in-out ${
+                  className={`block z-10 text-gray text-lg group-hover:rotate-y-[360deg] transition-all duration-500 ease-in-out ${
                     colorMap[link.key]
                   }`}
                 >
@@ -46,12 +46,12 @@ const Footer = () => {
         </div>
 
         {/* QUICK LINKS */}
-        <div className="flex flex-col gap-3 px-9 max-lg:px-0">
+        <div className="flex flex-col gap-4 px-9 max-lg:px-0">
           <div className="flex flex-col gap-1">
             <h3 className="text-lg md:text-xl text-[#cdcdcd] font-semibold uppercase">Hızlı Bağlantılar</h3>
             <hr className="w-12 h-[2.5px] bg-[#cdcdcd] border-none" />
           </div>
-          <ul className="flex flex-col gap-1">
+          <ul className="flex flex-col gap-2">
             {links.map((link, index) => (
               <li key={index} className="group w-fit">
                 <Link
@@ -67,12 +67,12 @@ const Footer = () => {
         </div>
 
         {/* WORK AREAS LINKS */}
-        <div className="flex flex-col gap-3 px-2 max-lg:px-0">
+        <div className="flex flex-col gap-4 px-2 max-lg:px-0">
           <div className="flex flex-col gap-1">
             <h3 className="text-lg md:text-xl text-[#cdcdcd] font-semibold uppercase">Çalışma Alanlarımız</h3>
             <hr className="w-12 h-[2.5px] bg-[#cdcdcd] border-none" />
           </div>
-          <ul className="flex flex-col gap-1">
+          <ul className="flex flex-col gap-2">
             {workAreasLink.dropdown.slice(0, 6).map((link, index) => (
               <li key={index} className="group w-fit">
                 <Link
@@ -88,12 +88,12 @@ const Footer = () => {
         </div>
 
         {/* CONTACT LINKS */}
-        <div className="col-span-full sm:col-span-1 flex flex-col gap-3">
+        <div className="col-span-full sm:col-span-1 flex flex-col gap-4 sm:-ml-4 md:-ml-6 lg:ml-0">
           <div className="flex flex-col gap-1">
             <h3 className="text-lg md:text-xl text-[#cdcdcd] font-semibold uppercase">Bize Ulaşın</h3>
             <hr className="w-12 h-[2.5px] bg-[#cdcdcd] border-none" />
           </div>
-          <ul className="flex flex-col gap-1">
+          <ul className="flex flex-col gap-2">
             {contactLinks.map((link, index) => (
               <li key={index} className="group w-fit">
                 <Link
@@ -101,7 +101,7 @@ const Footer = () => {
                   target="_blank"
                   className="flex gap-2.5 text-sm md:text-base group-hover:text-white transition-all duration-300"
                 >
-                  <span className="pt-1">{link.icon}</span>
+                  <span className="pt-0.5 md:pt-1">{link.icon}</span>
                   {link.label}
                 </Link>
               </li>

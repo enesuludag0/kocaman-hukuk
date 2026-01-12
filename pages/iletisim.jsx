@@ -2,46 +2,47 @@ import Meta from "@/components/Meta";
 import Image from "next/image";
 import { contactLinks } from "@/data/contactLinks";
 import emailjs from "@emailjs/browser";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { toast } from "react-toastify";
-import { socialLinks } from "@/data/socialLinks";
-import Link from "next/link";
 
 const Iletisim = () => {
   const form = useRef();
+  const [loading, setLoading] = useState(false);
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
-    emailjs
-      .sendForm(
+    try {
+      await emailjs.sendForm(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
         form.current,
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        () => {
-          toast.success("Mesajınız başarıyla gönderildi!");
-          form.current.reset();
-        },
-        () => {
-          toast.error("Mesaj gönderilirken bir hata oluştu. Lütfen tekrar deneyiniz.");
-        }
       );
+
+      toast.success("Mesajınız başarıyla gönderildi!");
+      form.current.reset();
+    } catch (error) {
+      console.error(error);
+      toast.error("Mesaj gönderilirken bir hata oluştu. Lütfen tekrar deneyiniz.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <>
       <Meta
         title="İletişim | Kocaman Hukuk & Danışmanlık"
+        href="/iletisim"
         description="Kocaman Hukuk Bürosu ile ihtiyaçlarınıza yönelik hızlı ve kapsamlı hukuki destek için iletişime geçin. Hukuki sorularınızı bize iletin, profesyonel danışmanlık randevusu alın. Bizlere telefon, e-posta, whatsapp ve ofis adresimiz üzerinden kolayca ulaşabilirsiniz."
         keywords="iletişim, avukatla görüşme, Ankara avukat, Ankara hukuk bürosu, hukuk danışmanlığı, telefon, e-posta, ofis adresi, whatsapp iletişim, whatsapp danışmanlık"
       />
 
       {/* CONTACT */}
       <section className="py-16 sm:py-20 md:py-24 lg:py-28">
-        <div className="w-full max-w-[1280px] mx-auto flex flex-col lg:flex-row items-start gap-12 sm:gap-16 md:gap-20 lg:gap-12 px-4 sm:px-6 md:px-8">
+        <div className="w-full max-w-[1280px] mx-auto flex flex-col lg:flex-row items-start gap-16 sm:gap-20 md:gap-24 lg:gap-12 px-4 sm:px-8">
           {/* CONTACT INFO */}
           <div className="size-full lg:w-1/2 flex flex-col gap-5 sm:gap-7 md:gap-7">
             <div className="flex items-center gap-4 sm:gap-5 ml-2">
@@ -91,7 +92,7 @@ const Iletisim = () => {
           </div>
 
           {/* CONTACT FORM */}
-          <div className="size-full lg:w-1/2 bg-white max-sm:py-10 px-6 sm:px-12 md:px-14 lg:px-16">
+          <div className="size-full lg:w-1/2 bg-white px-4 sm:px-8 md:px-12 lg:px-16">
             <div className="flex flex-col gap-8">
               <h1 className="text-2xl sm:text-3xl lg:text-4xl text-center font-semibold uppercase leading-snug">
                 Bizimle
@@ -106,14 +107,14 @@ const Iletisim = () => {
                     name="firstName"
                     placeholder="Adınız"
                     required
-                    className="w-full sm:w-1/2 bg-lightgray rounded-full outline-none font-medium px-5 py-3"
+                    className="w-full sm:w-1/2 bg-lightgray placeholder:text-[#a0a0a0] placeholder:text-sm rounded-full outline-none font-medium px-5 py-3"
                   />
                   <input
                     type="text"
                     name="lastName"
                     placeholder="Soyadınız"
                     required
-                    className="w-full sm:w-1/2 bg-lightgray rounded-full outline-none font-medium px-5 py-3"
+                    className="w-full sm:w-1/2 bg-lightgray placeholder:text-[#a0a0a0] placeholder:text-sm rounded-full outline-none font-medium px-5 py-3"
                   />
                 </div>
 
@@ -123,7 +124,7 @@ const Iletisim = () => {
                     name="email"
                     placeholder="E-Posta Adresiniz"
                     required
-                    className="w-full sm:w-1/2 bg-lightgray rounded-full outline-none font-medium px-5 py-3"
+                    className="w-full sm:w-1/2 bg-lightgray placeholder:text-[#a0a0a0] placeholder:text-sm rounded-full outline-none font-medium px-5 py-3"
                   />
                   <input
                     type="tel"
@@ -131,7 +132,7 @@ const Iletisim = () => {
                     placeholder="Telefon Numaranız"
                     maxLength={11}
                     required
-                    className="w-full sm:w-1/2 bg-lightgray rounded-full outline-none font-medium px-5 py-3"
+                    className="w-full sm:w-1/2 bg-lightgray placeholder:text-[#a0a0a0] placeholder:text-sm rounded-full outline-none font-medium px-5 py-3"
                   />
                 </div>
 
@@ -140,7 +141,7 @@ const Iletisim = () => {
                   name="subject"
                   placeholder="Mesajınızın Konusu"
                   required
-                  className="bg-lightgray rounded-full outline-none font-medium px-5 py-3"
+                  className="bg-lightgray placeholder:text-[#a0a0a0] placeholder:text-sm rounded-full outline-none font-medium px-5 py-3"
                 />
 
                 <textarea
@@ -148,13 +149,21 @@ const Iletisim = () => {
                   rows="5"
                   placeholder="Mesajınız"
                   required
-                  className="bg-lightgray rounded-3xl outline-none font-medium px-5 py-3"
+                  className="bg-lightgray placeholder:text-[#a0a0a0] placeholder:text-sm rounded-3xl outline-none font-medium px-5 py-3"
                 ></textarea>
                 <button
                   type="submit"
-                  className="w-full bg-gray text-base md:text-lg font-medium border mt-2 sm:mt-4 px-6 py-3 border-gray rounded-none shadow-sm uppercase tracking-widest cursor-pointer"
+                  disabled={loading}
+                  className={`w-full text-base md:text-lg font-medium border mt-2 sm:mt-4 px-6 py-3 rounded-none shadow-sm uppercase tracking-widest
+                    ${loading ? "bg-gray border-gray opacity-60 cursor-not-allowed" : "bg-gray border-gray cursor-pointer"}
+                  `}
                 >
-                  Gönder
+                  <span className="flex items-center justify-center gap-4">
+                    {loading && (
+                      <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                    )}
+                    {loading ? "Gönderiliyor..." : "Gönder"}
+                  </span>
                 </button>
               </form>
             </div>

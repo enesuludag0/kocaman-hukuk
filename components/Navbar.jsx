@@ -3,8 +3,9 @@ import Link from "next/link";
 import { links } from "@/data/links";
 import { FaChevronRight, FaAngleDown } from "react-icons/fa";
 import { usePathname } from "next/navigation";
-import { colorMap, socialLinks } from "@/data/socialLinks";
+import { socialLinks } from "@/data/socialLinks";
 import Image from "next/image";
+import GlareHover from "./ui/GlareHover";
 
 const Navbar = ({ isOpen, setIsOpen }) => {
   const pathname = usePathname();
@@ -23,16 +24,22 @@ const Navbar = ({ isOpen, setIsOpen }) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [setIsOpen]);
 
+  useEffect(() => {
+    if (!isOpen) {
+      setOpenDropdown(null);
+    }
+  }, [isOpen]);
+
   return (
     <>
       {/* Masaüstü navbar */}
       <nav className="hidden lg:block">
-        <ul className="flex gap-2 lg:gap-4 text-lg font-semibold uppercase">
+        <ul className="flex gap-1 text-lg font-semibold uppercase">
           {links.map((link, i) => (
             <li key={i} className="relative group">
               <Link
                 href={link.href}
-                className={`flex items-center gap-1 p-1 lg:py-2 lg:px-4 transition-all duration-500 ${
+                className={`flex items-center gap-1 px-2.5 py-1 transition-all duration-500 ${
                   pathname === link.href ? "text-white border-b-[3px] border-white" : "group-hover:text-white"
                 }`}
               >
@@ -80,7 +87,7 @@ const Navbar = ({ isOpen, setIsOpen }) => {
       >
         <Link href="/" className="flex justify-center py-4">
           <Image
-            src="/images/resim8.PNG"
+            src="/images/resim8.png"
             alt="Kocaman Hukuk Logo"
             width={200}
             height={50}
@@ -88,6 +95,7 @@ const Navbar = ({ isOpen, setIsOpen }) => {
             className="pointer-events-none select-none"
           />
         </Link>
+
         <ul className="flex flex-col text-[#777]">
           <hr className="border-neutral-300" />
           {links.map((link, i) => (
@@ -148,22 +156,30 @@ const Navbar = ({ isOpen, setIsOpen }) => {
               )}
             </React.Fragment>
           ))}
+        </ul>
 
-          <div className="py-8">
-            <ul className="flex items-center justify-center gap-2">
-              {socialLinks.map((link, index) => (
-                <li key={index}>
-                  <Link
-                    href={link.href}
-                    target="_blank"
-                    className={`block text-white rounded-full text-lg p-2.5 ${colorMap[link.key]}`}
-                  >
-                    {link.icon}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <ul className="flex items-center justify-center gap-2 py-8">
+          {socialLinks.map((link, index) => (
+            <li key={index}>
+              <GlareHover
+                width="100%"
+                height="100%"
+                borderRadius="0px"
+                glareColor="#ffffff"
+                glareOpacity={0.3}
+                glareAngle={-30}
+                glareSize={300}
+                transitionDuration={800}
+                playOnce={false}
+                className="border-0"
+                style={{ position: "relative" }}
+              >
+                <Link href={link.href} target="_blank" className={`block text-white rounded-full text-lg p-2.5 ${link.bgColor}`}>
+                  {link.icon}
+                </Link>
+              </GlareHover>
+            </li>
+          ))}
         </ul>
       </div>
     </>

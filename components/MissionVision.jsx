@@ -38,8 +38,8 @@ const MissionVision = () => {
           <p className="text-sm sm:text-base leading-relaxed max-w-2xl">
             Müvekkillerimize hukukun evrensel ilkeleri ve mesleki etik kurallar doğrultusunda, güvenilir, şeffaf ve nitelikli
             hukuki hizmet sunmayı temel görevimiz olarak benimsiyoruz. Her hukuki süreçte adaletin sağlanmasını esas alarak, hak
-            ve menfaatleri titizlikle koruyan, çözüm odaklı ve profesyonel bir yaklaşım sergiliyoruz. Sürecin her aşamasında
-            müvekkillerimizi doğru ve açık şekilde bilgilendirerek, en etkili sonuca ulaşmayı amaçlıyoruz.
+            ve menfaatleri titizlikle koruyan, çözüm odaklı bir yaklaşım sergiliyoruz. Sürecin her aşamasında müvekkillerimizi
+            doğru ve açık şekilde bilgilendirerek, en etkili sonuca ulaşmayı amaçlıyoruz.
           </p>
         </div>
       </div>

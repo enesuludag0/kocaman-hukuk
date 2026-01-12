@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Separator from "./Separator";
+import GlareHover from "./ui/GlareHover";
 
 const WorkAreas = () => {
   const pathname = usePathname();
@@ -12,12 +13,12 @@ const WorkAreas = () => {
     <section className="bg-gray-100 py-16 sm:py-20 md:py-24 lg:py-28">
       <div className="container flex flex-col gap-10 md:gap-16 px-4 sm:px-8">
         {pathname === "/" && (
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-6">
             <Separator />
             <h1 className="text-3xl sm:text-4xl md:text-5xl text-center font-semibold uppercase">Çalışma Alanlarımız</h1>
           </div>
         )}
-        <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-x-6 md:gap-x-8 lg:gap-x-10 gap-y-14 sm:gap-y-16 md:gap-y-18 lg:gap-y-20">
+        <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-x-6 sm:gap-x-8 lg:gap-x-10 gap-y-14 sm:gap-y-16 md:gap-y-18 lg:gap-y-20">
           {links
             .filter((link) => link.dropdown)
             .flatMap((link) => link.dropdown)
@@ -30,19 +31,35 @@ const WorkAreas = () => {
               >
                 {/* RESİM */}
                 <div className="absolute inset-0 overflow-hidden">
-                  <Image
-                    src={item.image}
-                    alt={`${item.label} Logo`}
-                    fill
-                    draggable="false"
-                    className="object-cover group-hover:scale-110 transition-transform duration-500 ease-out pointer-events-none select-none"
-                  />
+                  <GlareHover
+                    width="100%"
+                    height="100%"
+                    borderRadius="0px"
+                    glareColor="#ffffff"
+                    glareOpacity={0.3}
+                    glareAngle={-30}
+                    glareSize={300}
+                    transitionDuration={1000}
+                    playOnce={false}
+                    className="border-0"
+                    style={{ position: "relative" }}
+                  >
+                    <Image
+                      src={item.image}
+                      alt={`${item.label} Logo`}
+                      fill
+                      draggable="false"
+                      className="object-cover group-hover:scale-110 transition-transform duration-500 ease-out pointer-events-none select-none"
+                    />
+                  </GlareHover>
                 </div>
 
                 {/* KUTU */}
                 <div className="absolute w-10/12 left-1/12 -bottom-7 md:-bottom-8 h-[60px] md:h-[70px] overflow-hidden">
                   <div className="absolute inset-0 bg-navy text-white flex justify-center items-center text-center border-b-4 border-red-800 z-10">
-                    <h3 className="md:text-lg font-bold uppercase tracking-wide leading-5 md:leading px-4">{item.label}</h3>
+                    <h3 className="text-base md:text-lg font-bold uppercase tracking-wide leading-5 md:leading-6 px-4">
+                      {item.label}
+                    </h3>
                   </div>
                   <div className="absolute inset-0 bg-red-800 text-white flex justify-center items-center z-20 translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
                     <p className="text-sm font-bold uppercase underline tracking-wide">Daha Fazlası</p>

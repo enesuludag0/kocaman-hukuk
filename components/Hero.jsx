@@ -9,7 +9,7 @@ const playFairDisplay = Playfair_Display({
   weight: ["400", "500", "600", "700", "800", "900"]
 });
 
-const images = ["/images/image5.jpg", "/images/image6.jpg"];
+const images = ["/images/footer.jpg", "/images/image6.jpg"];
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -40,15 +40,14 @@ const Hero = () => {
             index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
           }`}
         >
-          <Image
-            src={src}
-            alt={`Slide ${index}`}
-            fill
-            draggable={false}
-            className={`object-cover brightness-80 transition-transform duration-[10000ms] ease-out pointer-events-none select-none ${
+          <div
+            className={`absolute inset-0 bg-cover bg-center brightness-100 pointer-events-none select-none transition-transform duration-[10000ms] ease-out ${
               index === currentIndex && zoom ? "scale-110" : "scale-100"
             }`}
-          />
+            style={{
+              backgroundImage: `url('${src}')`
+            }}
+          ></div>
         </div>
       ))}
 
@@ -82,8 +81,8 @@ const Hero = () => {
         </div>
 
         <p className="text-xs sm:text-sm md:text-base max-w-2xl md:font-medium">
-          Ankara’da faaliyet gösteren <span className="text-yellow-600 font-semibold">Kocaman Hukuk & Danışmanlık Bürosu</span>{" "}
-          olarak, adalete bağlılığımız ve yıllara dayanan deneyimimizle güvenilir ve sonuç odaklı hukuki çözümler sunuyoruz.
+          Ankara’da faaliyet gösteren <span className="text-navy font-semibold">Kocaman Hukuk & Danışmanlık Bürosu</span> olarak,
+          adalete bağlılığımız ve yıllara dayanan deneyimimizle güvenilir ve sonuç odaklı hukuki çözümler sunuyoruz.
         </p>
 
         <div className="flex justify-center items-center gap-4 tracking-wide">

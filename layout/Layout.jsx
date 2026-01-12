@@ -58,14 +58,14 @@ const Layout = ({ children }) => {
   const showNavTabs = pathname.startsWith("/calisma-alanlarimiz/");
 
   return (
-    <main className={`bg-white relative flex flex-col min-h-screen overflow-hidden ${sourceSerif.className}`}>
+    <main className={`bg-white relative flex flex-col min-h-screen overflow-clip ${sourceSerif.className}`}>
       <Header />
       {pathname !== "/" && <Cover />}
       {showNavTabs ? <NavTabsLayout>{children}</NavTabsLayout> : children}
 
       {/* CONTACT (WP, PHONE, EMAIL) */}
       <div
-        className="max-md:hidden fixed -right-13 top-1/2 -translate-y-1/2 z-40"
+        className="max-md:hidden fixed -right-14 top-1/2 -translate-y-1/2 z-40"
         onMouseEnter={() => setTimeout(() => setShowOptions(true), 200)}
         onMouseLeave={() => setTimeout(() => setShowOptions(false), 200)}
       >
@@ -163,7 +163,7 @@ const Layout = ({ children }) => {
 
       {/* SCROLL UP */}
       <div
-        className={`fixed bottom-4 right-4 max-md:bottom-18 max-md:right-3 z-50 transition-all duration-500 ease-in-out transform ${
+        className={`fixed bottom-4 right-4 max-md:bottom-17 max-md:right-3 z-50 transition-all duration-500 ease-in-out transform ${
           isVisible ? "opacity-100 scale-100" : "opacity-0 scale-0"
         }
         `}
@@ -177,19 +177,19 @@ const Layout = ({ children }) => {
       </div>
 
       {/* CONTACT CONTAINER */}
-      <section className="relative w-full bg-orange-950 text-white overflow-hidden px-4 sm:px-8 py-12 md:py-16">
+      <section className="relative w-full bg-orange-950 text-white overflow-hidden px-4 sm:px-8 py-12 min-[945px]:py-16">
         <div
-          className="absolute inset-0 bg-contain bg-center opacity-5 pointer-events-none select-none"
+          className="absolute inset-0 bg-contain bg-center opacity-6 pointer-events-none select-none"
           style={{ backgroundImage: "url('/images/geo15.jpg')" }}
         ></div>
         <div className="relative max-w-[1000px] mx-auto h-full grid grid-cols-1 md:grid-cols-5 items-center text-center md:text-left gap-y-10 md:gap-x-10">
-          <h1 className="col-span-2 text-4xl font-semibold md:w-72 lg:w-full">Size nasıl yardımcı olabiliriz?</h1>
-          <p className="col-span-2 md:w-72 md:pl-6 lg:pl-0 lg:pr-8 lg:w-full">
+          <h1 className="col-span-2 text-3xl sm:text-4xl font-semibold w-full">Size nasıl yardımcı olabiliriz?</h1>
+          <p className="col-span-2 text-sm sm:text-base md:-ml-8 min-[945px]:!ml-0 mx-auto xs:w-4/5 md:w-full">
             Aklınıza takılan sorular için bizimle iletişime geçebilir, çalışma alanlarımız hakkında detaylı bilgi alabilirsiniz.
           </p>
           <Link
             href="/iletisim"
-            className="w-fit mx-auto bg-white text-black uppercase font-medium tracking-wide px-6 py-3 hover:brightness-90 transition-all duration-400"
+            className="col-span-1 justify-self-end max-md:mx-auto w-fit text-sm sm:text-base bg-white text-black uppercase font-medium tracking-wide px-6 py-3 hover:brightness-90 transition-all duration-400"
           >
             İletişim
           </Link>
@@ -214,16 +214,11 @@ const Layout = ({ children }) => {
 
       {/* COPYRIGHT */}
       <section className="w-full bg-black text-[#cdcdcd] py-5 max-md:pb-19">
-        <div className="max-w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-y-3 text-center text-xs md:text-sm px-4 sm:px-8 lg:pl-20">
-          <span>Telif Hakkı &copy; 2025 Kocaman Hukuk &nbsp;|&nbsp; Tüm Hakları Saklıdır.</span>
-          <span>Enes Uludağ tarafından yapılmıştır.</span>
-          {/* <div className="flex gap-8">
-            {links.map((link, index) => (
-              <Link key={index} href={link.href}>
-                {link.label}
-              </Link>
-            ))}
-          </div> */}
+        <div className="container mx-auto text-xs font-medium flex flex-col sm:flex-row items-center justify-between gap-y-3 text-center px-4 sm:px-8">
+          <span>&copy; 2026 Kocaman Hukuk & Danışmanlık | Tüm Hakları Saklıdır.</span>
+          <span>
+            <span className="text-red-900 cursor-pointer">Enes Uludağ</span> tarafından yapılmıştır.
+          </span>
         </div>
       </section>
     </main>

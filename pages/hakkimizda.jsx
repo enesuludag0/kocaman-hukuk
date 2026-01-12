@@ -11,6 +11,7 @@ const Hakkimizda = () => {
     <>
       <Meta
         title="Hakkımızda | Kocaman Hukuk & Danışmanlık"
+        href="/hakkimizda"
         description="Kocaman Hukuk Bürosu’nun alanında uzman, deneyimli avukat kadrosunu tanıyın. Güvenilir, çözüm odaklı ve profesyonel hukuk ekibimizle yanınızdayız."
         keywords="Kocaman Hukuk, avukatlık ofisi, avukat ekibi, hukuk bürosu ekibi, uzman avukatlar, hukuk kadrosu"
       />

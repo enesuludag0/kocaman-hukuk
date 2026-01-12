@@ -10,7 +10,7 @@ export default function RelatedLinks() {
   return (
     <section className="w-full max-w-screen-xs sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg mx-auto py-16 sm:py-20 md:py-24 lg:py-28">
       <div className="px-4 sm:px-8">
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-7">
           <Separator />
           <h1 className="text-3xl sm:text-4xl md:text-5xl text-center font-semibold uppercase pb-16">İlgili Bağlantılar</h1>
         </div>
