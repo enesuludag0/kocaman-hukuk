@@ -2,7 +2,7 @@
 
 Bu proje, **Kocaman Hukuk Bürosu** için hazırlanmış **Next.js** ile geliştirilmiş modern, hızlı ve SEO‑uyumlu bir hukuk bürosu web sitesidir.
 
-🔗 **Canlı site:** https://kocamanhukuk.vercel.app (Deploy edilmiş hali ile)
+🔗 **Canlı site:** https://kocamanhukuk.vercel.app
 
 ---
 
