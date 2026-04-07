@@ -45,7 +45,7 @@ Bu proje şu teknolojileri kullanır:
 Aşağıdaki adımları takip ederek projeyi çalıştırabilirsiniz:
 
 ```bash
-# Depoyu klonla
+# Repo'yu klonla
 git clone https://github.com/enesuludag0/kocaman-hukuk.git
 
 # Proje dizinine gir
