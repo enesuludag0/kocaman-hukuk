@@ -1,6 +1,6 @@
 # 📚 Kocaman Hukuk Bürosu Web Uygulaması
 
-Bu proje, **Kocaman Hukuk Bürosu** için hazırlanmış **Next.js** ile geliştirilmiş modern, hızlı ve SEO‑uyumlu bir hukuk bürosu web sitesidir. :contentReference[oaicite:1]{index=1}
+Bu proje, **Kocaman Hukuk Bürosu** için hazırlanmış **Next.js** ile geliştirilmiş modern, hızlı ve SEO‑uyumlu bir hukuk bürosu web sitesidir.
 
 🔗 **Canlı site:** https://kocamanhukuk.vercel.app (Deploy edilmiş hali ile)
 
@@ -10,12 +10,12 @@ Bu proje, **Kocaman Hukuk Bürosu** için hazırlanmış **Next.js** ile gelişt
 
 **Kocaman Hukuk**, Next.js tabanlı bir frontend uygulamasıdır. Uygulama, modern React yapı taşlarıyla oluşturulmuş olup SEO‑uyumlu, performans odaklı, açık kaynaklı bir hukuk içerik platformudur.
 
-Bu proje, kullanıcıların;
-- Responsive ve hızlı web deneyimi yaşamasını,
-- Hukukla ilgili sayfalara erişimini,
-- Geliştiricilerin kolayca katkı yapmasını sağlar.
+Bu proje, kullanıcıların:  
+- Hızlı ve responsive bir web deneyimi yaşamasını,  
+- Hukukla ilgili sayfalara kolayca erişimini,  
+- Hakkında, ekip, çalışma alanları ve iletişim gibi bölümlere ulaşmasını sağlar
 
-Ön uç tarafı Next.js ile tasarlanmıştır ve statik + dinamik sayfaları destekler.
+Ön uç tarafı Next.js ile tasarlanmıştır ve statik sayfaları destekler.
 
 ---
 
@@ -35,7 +35,7 @@ Bu proje şu teknolojileri kullanır:
 
 - **Next.js** – React tabanlı framework  
 - **React** – UI geliştirme  
-- **CSS / Tailwind (varsa)** – Stil  
+- **CSS / Tailwind** – Stil  
 - **Vercel** – Kolay deployment ve hosting
 
 ---
@@ -55,3 +55,9 @@ cd kocaman-hukuk
 npm install
 # veya
 yarn install
+
+# Geliştirme sunucusunu başlat
+npm run dev
+
+# Tarayıcıda aç
+http://localhost:3000
