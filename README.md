@@ -1,6 +1,6 @@
-# 📚 Kocaman Hukuk Web Uygulaması
+# 📚 Kocaman Hukuk Bürosu Web Uygulaması
 
-Bu proje, Türkiye’de hukuk alanında içerik ve bilgi sunan **Next.js** ile geliştirilmiş modern ve hızlı bir web uygulamasıdır. Kullanıcıların hukuki içeriklere kolayca erişebilmesini, sayfalar arasında hızlı gezinmesini ve hukukla ilgili kaynaklara ulaşmasını sağlar.
+Bu proje, **Kocaman Hukuk Bürosu** için hazırlanmış **Next.js** ile geliştirilmiş modern, hızlı ve SEO‑uyumlu bir hukuk bürosu web sitesidir. :contentReference[oaicite:1]{index=1}
 
 🔗 **Canlı site:** https://kocamanhukuk.vercel.app (Deploy edilmiş hali ile)
 
